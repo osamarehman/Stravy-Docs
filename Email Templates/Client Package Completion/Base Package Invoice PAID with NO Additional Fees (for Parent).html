@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Package Complete</title>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f4f4;
+    "
+  >
+    <table
+      role="presentation"
+      style="width: 100%; border-collapse: collapse; background-color: #f4f4f4"
+      cellpadding="0"
+      cellspacing="0"
+    >
+      <tr>
+        <td style="padding: 20px 0">
+          <table
+            role="presentation"
+            style="
+              width: 100%;
+              max-width: 600px;
+              margin: 0 auto;
+              background-color: #ffffff;
+              border-collapse: collapse;
+            "
+            cellpadding="0"
+            cellspacing="0"
+          >
+            <!-- Header with Logo -->
+            <tr>
+              <td
+                style="
+                  padding: 30px 40px;
+                  text-align: center;
+                  background-color: #002e66;
+                "
+              >
+                <img
+                  src="data:image/png;base64,BASE64_LOGO_HERE"
+                  alt="Stryv Academics"
+                  style="
+                    max-width: 180px;
+                    height: auto;
+                    display: block;
+                    margin: 0 auto;
+                  "
+                />
+              </td>
+            </tr>
+
+            <!-- Main Content -->
+            <tr>
+              <td style="padding: 40px 40px 30px 40px">
+                <h2
+                  style="
+                    margin: 0 0 20px 0;
+                    color: #002e66;
+                    font-size: 24px;
+                    font-weight: bold;
+                  "
+                >
+                  Package Completed!
+                </h2>
+
+                <p
+                  style="
+                    margin: 0 0 20px 0;
+                    color: #333333;
+                    font-size: 16px;
+                    line-height: 1.6;
+                  "
+                >
+                  Hi {{$json.parent_first_name}},
+                </p>
+
+                <p
+                  style="
+                    margin: 0 0 25px 0;
+                    color: #333333;
+                    font-size: 16px;
+                    line-height: 1.6;
+                  "
+                >
+                  Congratulations! {{$json.student_first_name}} has completed their tutoring package with {{$json.tutor_first_name}}. We've prepared a comprehensive package report with all lesson summaries. Here are the key details:
+                </p>
+
+                <!-- Package Details Box -->
+                <table
+                  role="presentation"
+                  style="
+                    width: 100%;
+                    border-collapse: collapse;
+                    background-color: #f8f9fa;
+                    border-radius: 8px;
+                    margin-bottom: 25px;
+                  "
+                  cellpadding="0"
+                  cellspacing="0"
+                >
+                  <tr>
+                    <td style="padding: 20px">
+                      <table
+                        role="presentation"
+                        style="width: 100%; border-collapse: collapse"
+                        cellpadding="0"
+                        cellspacing="0"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #666666;
+                              font-size: 14px;
+                              font-weight: bold;
+                              width: 35%;
+                            "
+                          >
+                            Package ID:
+                          </td>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #333333;
+                              font-size: 14px;
+                            "
+                          >
+                            {{$json.package_id}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #666666;
+                              font-size: 14px;
+                              font-weight: bold;
+                            "
+                          >
+                            Tutor:
+                          </td>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #333333;
+                              font-size: 14px;
+                            "
+                          >
+                            {{$json.tutor_name}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #666666;
+                              font-size: 14px;
+                              font-weight: bold;
+                            "
+                          >
+                            Student:
+                          </td>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #333333;
+                              font-size: 14px;
+                            "
+                          >
+                            {{$json.student_name}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #666666;
+                              font-size: 14px;
+                              font-weight: bold;
+                            "
+                          >
+                            Subject:
+                          </td>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #333333;
+                              font-size: 14px;
+                            "
+                          >
+                            {{$json.subject}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #666666;
+                              font-size: 14px;
+                              font-weight: bold;
+                            "
+                          >
+                            Total Hours Completed:
+                          </td>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #333333;
+                              font-size: 14px;
+                            "
+                          >
+                            {{$json.total_hours_completed}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #666666;
+                              font-size: 14px;
+                              font-weight: bold;
+                            "
+                          >
+                            Completion Date:
+                          </td>
+                          <td
+                            style="
+                              padding: 8px 0;
+                              color: #333333;
+                              font-size: 14px;
+                            "
+                          >
+                            {{$json.completion_date}}
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Package Report Section -->
+                <p
+                  style="
+                    margin: 0 0 25px 0;
+                    color: #333333;
+                    font-size: 16px;
+                    line-height: 1.6;
+                  "
+                >
+                  Please see the <strong>attached PDF</strong> for your complete package report, including all lesson summaries, progress highlights, and overall feedback.
+                </p>
+                
+                <!-- Next Steps Section -->
+                <h3
+                  style="
+                    margin: 0 0 15px 0;
+                    color: #002e66;
+                    font-size: 18px;
+                    font-weight: bold;
+                  "
+                >
+                  Next Steps
+                </h3>
+
+                <!-- Feedback Section -->
+                <p
+                  style="
+                    margin: 0 0 15px 0;
+                    color: #333333;
+                    font-size: 16px;
+                    line-height: 1.6;
+                  "
+                >
+                  We'd love to hear your feedback!
+                </p>
+
+                <!-- Feedback Button -->
+                <table
+                  role="presentation"
+                  style="margin: 0 0 25px 0"
+                  cellpadding="0"
+                  cellspacing="0"
+                >
+                  <tr>
+                    <td
+                      style="
+                        background-color: #002e66;
+                        border-radius: 4px;
+                        text-align: center;
+                      "
+                    >
+                      <a
+                        href="{{$json.feedback_form_link}}"
+                        style="
+                          display: inline-block;
+                          padding: 12px 30px;
+                          color: #ffffff;
+                          text-decoration: none;
+                          font-size: 16px;
+                          font-weight: bold;
+                        "
+                      >
+                        Share Your Feedback
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Closing -->
+                <p
+                  style="
+                    margin: 0 0 30px 0;
+                    color: #333333;
+                    font-size: 16px;
+                    line-height: 1.6;
+                  "
+                >
+                  If you have any questions or would like to book another package, message us on WhatsApp at +852 6942 0840.
+                </p>
+
+                <!-- Divider -->
+                <div
+                  style="border-top: 1px solid #e0e0e0; margin: 30px 0"
+                ></div>
+
+                <!-- Footer/Signature -->
+                <p style="margin: 0 0 10px 0; color: #333333; font-size: 16px">
+                  <span style="color: #002e66; font-weight: bold"
+                    >The Stryv Academics Team</span
+                  >
+                </p>
+
+                <p style="margin: 0 0 5px 0; color: #666666; font-size: 14px">
+                  📧
+                  <a
+                    href="mailto:team@stryvacademics.com"
+                    style="color: #002e66; text-decoration: none"
+                    >team@stryvacademics.com</a
+                  >
+                </p>
+
+                <p style="margin: 0 0 5px 0; color: #666666; font-size: 14px">
+                  📱
+                  <a
+                    href="https://wa.me/85269420840"
+                    style="color: #002e66; text-decoration: none"
+                    >+852 6942 0840</a
+                  >
+                  (WhatsApp)
+                </p>
+
+                <p style="margin: 0 0 20px 0; color: #666666; font-size: 14px">
+                  🌐
+                  <a
+                    href="https://stryvacademics.com/"
+                    style="color: #002e66; text-decoration: none"
+                    >stryvacademics.com</a
+                  >
+                </p>
+
+                <p
+                  style="
+                    margin: 0;
+                    color: #999999;
+                    font-size: 13px;
+                    font-style: italic;
+                  "
+                >
+                  Questions or concerns? We're here to help - just reply to this
+                  email.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Footer Bar -->
+            <tr>
+              <td
+                style="
+                  padding: 20px 40px;
+                  background-color: #f8f9fa;
+                  text-align: center;
+                "
+              >
+                <p style="margin: 0; color: #999999; font-size: 12px">
+                  © 2025 Stryv Academics. All rights reserved.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

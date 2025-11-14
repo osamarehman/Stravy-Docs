@@ -1,0 +1,20 @@
+# Airtable Migration Dependencies
+# Install with: pip install -r requirements.txt
+
+# Airtable Python SDK
+pyairtable==2.3.3
+
+# Environment variable management
+python-dotenv==1.0.0
+
+# Data manipulation
+pandas==2.1.4
+
+# Validation and reporting
+tabulate==0.9.0
+
+# Progress bars for long-running operations
+tqdm==4.66.1
+
+# Date/time utilities
+python-dateutil==2.8.2

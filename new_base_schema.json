@@ -1,0 +1,2763 @@
+{
+  "extraction_metadata": {
+    "base_id": "appCaAwS1hrYvTEdF",
+    "extracted_at": "2025-11-14T11:30:11.165787",
+    "total_tables": 14,
+    "total_records_counted": 398
+  },
+  "tables": [
+    {
+      "name": "Users",
+      "id": "tbl3n9FwcG1fntNNm",
+      "record_count": 83,
+      "record_count_display": "83",
+      "field_count": 18,
+      "fields": [
+        {
+          "name": "ID",
+          "type": "formula",
+          "id": "fldScQRw2V2Z0dXD9",
+          "options": "formula='RECORD_ID()' is_valid=True referenced_field_ids=[] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "First Name",
+          "type": "singleLineText",
+          "id": "fldExSDXAEutW2HgE"
+        },
+        {
+          "name": "Last Name",
+          "type": "singleLineText",
+          "id": "fldzaCOFp1Jc61jwv"
+        },
+        {
+          "name": "Full Name",
+          "type": "formula",
+          "id": "fldpbSeszjjotsFD6",
+          "options": "formula='{fldExSDXAEutW2HgE} & \" \" & {fldzaCOFp1Jc61jwv}' is_valid=True referenced_field_ids=['fldExSDXAEutW2HgE', 'fldzaCOFp1Jc61jwv'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Email",
+          "type": "email",
+          "id": "fldG8yNm2bbHG38Oy"
+        },
+        {
+          "name": "Phone",
+          "type": "phoneNumber",
+          "id": "fldOJjSJjKvhce5y9"
+        },
+        {
+          "name": "Role",
+          "type": "singleSelect",
+          "id": "fldmMqGUA14mQixFp",
+          "options": "choices=[Choice(id='selv7ZAJKQpJQm4xv', name='Parent', color='blueLight2'), Choice(id='selZ4pIYxzkZOisB3', name='Student (Independent)', color='cyanLight2'), Choice(id='selkEe0FaUY16B8i8', name='Student (Dependent)', color='tealLight2'), Choice(id='selytn8qEjoviopVc', name='Tutor', color='greenLight2')]"
+        },
+        {
+          "name": "Status",
+          "type": "singleSelect",
+          "id": "fld6gv779fydGBlpf",
+          "options": "choices=[Choice(id='selF3EJaOGi06nh2z', name='Active', color='blueLight2'), Choice(id='seld9M61Y7lDKIKEg', name='Inactive', color='cyanLight2')]"
+        },
+        {
+          "name": "Created At",
+          "type": "createdTime",
+          "id": "fldvGqWaDGcMCT7ZQ"
+        },
+        {
+          "name": "Last Login At",
+          "type": "dateTime",
+          "id": "fldhSguC1wzNtrWaC",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Profile Completed At",
+          "type": "dateTime",
+          "id": "fldRsANNZiqHSxTgI",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Profile Photo",
+          "type": "multipleAttachments",
+          "id": "fldOl0C2mmMlz1V56",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Xero Contact ID",
+          "type": "singleLineText",
+          "id": "fldeHl2RdjSbVezJW"
+        },
+        {
+          "name": "Xero Contact ID Created At",
+          "type": "dateTime",
+          "id": "flduvJYkaSt9tZyFP",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "id": "fldv6lJvBwPghwKas"
+        },
+        {
+          "name": "Link to Tutor Record",
+          "type": "multipleRecordLinks",
+          "id": "fld814TBqOO1R7h6s",
+          "options": "is_reversed=False linked_table_id='tblv7MknTwat2Ddo5' prefers_single_record_link=False inverse_link_field_id='fldCqZ0kl8xPiqFOP' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Link to Parent Record",
+          "type": "multipleRecordLinks",
+          "id": "fldxiCqtyn1bbIpwX",
+          "options": "is_reversed=False linked_table_id='tbl3WZiiqYZMQ4M4y' prefers_single_record_link=False inverse_link_field_id='fld4x8exhFXt3pyEM' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Link to Student Record",
+          "type": "multipleRecordLinks",
+          "id": "fldTm5as7LmHNjN46",
+          "options": "is_reversed=False linked_table_id='tblRBe3k3Mm5C3sHY' prefers_single_record_link=False inverse_link_field_id='fldck80roRWepAI0L' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Tutors",
+      "id": "tblv7MknTwat2Ddo5",
+      "record_count": 8,
+      "record_count_display": "8",
+      "field_count": 27,
+      "fields": [
+        {
+          "name": "ID",
+          "type": "formula",
+          "id": "fld1WJomHDJy7b0xf",
+          "options": "formula='RECORD_ID()' is_valid=True referenced_field_ids=[] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "User ID",
+          "type": "multipleRecordLinks",
+          "id": "fldCqZ0kl8xPiqFOP",
+          "options": "is_reversed=False linked_table_id='tbl3n9FwcG1fntNNm' prefers_single_record_link=True inverse_link_field_id='fld814TBqOO1R7h6s' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Full Name",
+          "type": "multipleLookupValues",
+          "id": "flddRrcJTumv4GAXm",
+          "options": "field_id_in_linked_table='fldpbSeszjjotsFD6' is_valid=True record_link_field_id='fldCqZ0kl8xPiqFOP' result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Email",
+          "type": "multipleLookupValues",
+          "id": "fldjneW68uVQ2ff8M",
+          "options": "field_id_in_linked_table='fldG8yNm2bbHG38Oy' is_valid=True record_link_field_id='fldCqZ0kl8xPiqFOP' result=EmailFieldConfig(type='email')"
+        },
+        {
+          "name": "Phone",
+          "type": "multipleLookupValues",
+          "id": "fldjH1p6mHWqjzrLX",
+          "options": "field_id_in_linked_table='fldOJjSJjKvhce5y9' is_valid=True record_link_field_id='fldCqZ0kl8xPiqFOP' result=PhoneNumberFieldConfig(type='phoneNumber')"
+        },
+        {
+          "name": "Headliner",
+          "type": "singleLineText",
+          "id": "fldEmKUPydQxS2FIn"
+        },
+        {
+          "name": "About Me",
+          "type": "multilineText",
+          "id": "fldrxEkml0K4OaYl8"
+        },
+        {
+          "name": "Academic Qualifications",
+          "type": "multilineText",
+          "id": "fldwtdn8nFDBi9m8a"
+        },
+        {
+          "name": "Teaching Experience",
+          "type": "multilineText",
+          "id": "fldbomjP16EeHX2YZ"
+        },
+        {
+          "name": "Teaching Approach",
+          "type": "multilineText",
+          "id": "fldZnum67kbHeesUh"
+        },
+        {
+          "name": "Education Level",
+          "type": "singleSelect",
+          "id": "fldqW866J7Ijn8s7Z",
+          "options": "choices=[Choice(id='seltDPFWppFOCwv6D', name='Secondary', color='blueLight2'), Choice(id='sel0tqbFaMugHws3K', name='Undergraduate', color='cyanLight2'), Choice(id='selcqxnrRNfQLVkAI', name='Graduate', color='tealLight2'), Choice(id='selVC8rGMvUjhl0AB', name='PhD', color='greenLight2')]"
+        },
+        {
+          "name": "Secondary School",
+          "type": "multipleRecordLinks",
+          "id": "fldGbpD3X2ModN7nD",
+          "options": "is_reversed=False linked_table_id='tblSOc61sKiB8oFpI' prefers_single_record_link=True inverse_link_field_id='fldu6pUvy1RT44wk2' view_id_for_record_selection='viwM7E5PVE19G9GQZ'"
+        },
+        {
+          "name": "University",
+          "type": "multipleRecordLinks",
+          "id": "fldQ1doVkDRBIPkVy",
+          "options": "is_reversed=False linked_table_id='tblSOc61sKiB8oFpI' prefers_single_record_link=True inverse_link_field_id='fldcWtfHTKDPlr5KY' view_id_for_record_selection='viwEoH0GuPE3wLtMs'"
+        },
+        {
+          "name": "Subjects",
+          "type": "multipleRecordLinks",
+          "id": "fldTBIymheJOi50jE",
+          "options": "is_reversed=False linked_table_id='tblFxN9BdHM8iLXd1' prefers_single_record_link=False inverse_link_field_id='fldnGd43Tx0XH5JR4' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Grade/Year",
+          "type": "singleSelect",
+          "id": "fldvcjc9udxzJ6qUw",
+          "options": "choices=[Choice(id='seluA9yfFHOCQUevd', name='Year 1 (University)', color='cyanLight1'), Choice(id='seloLOkejtMxnm9Q4', name='Year 2 (University)', color='tealLight1'), Choice(id='sel30vAnColCBGE8I', name='Year 3 (University)', color='greenLight1'), Choice(id='selD3yuwbbjunPW8N', name='Year 4 (University)', color='yellowLight1'), Choice(id='selOdgEmRru9JvGVS', name='Grade 9', color='pinkLight2'), Choice(id='sel4dcoRIvak4qDAZ', name='Grade 10', color='purpleLight2'), Choice(id='seldTcX16bUMxRWGw', name='Grade 11', color='grayLight2'), Choice(id='sele7HvaSJWU9bTvm', name='Grade 12', color='blueLight1'), Choice(id='selT3mUxxwCtbUFFv', name='Year 10', color='yellowLight2'), Choice(id='sel5BnaLn5gy3bTak', name='Year 11', color='orangeLight2'), Choice(id='selbmi64p9uuv9fHI', name='Year 12', color='redLight2'), Choice(id='selbI8zadhFPP8ZD5', name='Year 13', color='greenLight2'), Choice(id='sel2AaNxQLSfQUFEs', name='Form 4 (F4)', color='blueLight2'), Choice(id='selsPgKPXQY9CWpVH', name='Form 5 (F5)', color='cyanLight2'), Choice(id='seldOiIIjMt9qr643', name='Form 6 (F6)', color='tealLight2'), Choice(id='selhpqkPI2n1YMXt1', name=\"Master's Student\", color='orangeLight1'), Choice(id='selhifxAUg5gldIIV', name='Postgraduate Diploma Student', color='purpleLight1'), Choice(id='selhQX8oAWvg5Lcmt', name='PhD Student', color='redLight1'), Choice(id='selHJCm3Bs2fG5Gvu', name='Graduate/Working Professional', color='pinkLight1'), Choice(id='selthB87Z9OdM0RFO', name='Gap Year', color='grayLight1')]"
+        },
+        {
+          "name": "Preferred Modes",
+          "type": "multipleSelects",
+          "id": "fldNDcJpHFKDsUKKM",
+          "options": "choices=[Choice(id='sel9tDvMsfcjqBlYl', name='Online', color='blueLight2'), Choice(id='selngzw7NmOL8uPlF', name='In-person', color='cyanLight2')]"
+        },
+        {
+          "name": "Willing to Travel To",
+          "type": "multipleSelects",
+          "id": "fldMPbI5x7kV1JKPv",
+          "options": "choices=[Choice(id='selT0uI4C8CMbmZcB', name='Central & Western', color='blueLight2'), Choice(id='sel9rzbvuMvCRho9C', name='Eastern', color='cyanLight2'), Choice(id='sel7vzDuKxhxtmdL6', name='Southern', color='tealLight2'), Choice(id='selQKmFo8llBuhiTy', name='Wan Chai', color='greenLight2'), Choice(id='seltxmYOA4zRO5lpI', name='Kowloon City', color='yellowLight2'), Choice(id='selkgWNHGhkRuadKs', name='Kwun Tong', color='orangeLight2'), Choice(id='selIhdFABpI1ajs9n', name='Sham Shui Po', color='redLight2'), Choice(id='selwxEWXRZNVGL5iY', name='Wong Tai Sin', color='pinkLight2'), Choice(id='selXy2ctq32nWz9Fq', name='Yau Tsim Mong', color='purpleLight2'), Choice(id='selZHyHcfvJkcJEgB', name='Islands', color='grayLight2'), Choice(id='selwN56kIlHRZgKYz', name='Kwai Tsing', color='blueLight1'), Choice(id='sel3ZybIZYuCS4uUa', name='North', color='cyanLight1'), Choice(id='seljdn2drLeeuWOlf', name='Sai Kung', color='tealLight1'), Choice(id='sels1sNyWzj3XEyUF', name='Sha Tin', color='greenLight1'), Choice(id='selBZgA9vs8yUicd9', name='Tai Po', color='yellowLight1'), Choice(id='selWzmwxvAbN0TTwl', name='Tsuen Wan', color='orangeLight1'), Choice(id='selXbjCXChNGqKlsB', name='Tuen Mun', color='redLight1'), Choice(id='selUaos84hMDVdsM7', name='Yuen Long', color='pinkLight1')]"
+        },
+        {
+          "name": "Bank Name",
+          "type": "singleLineText",
+          "id": "fldUxsQJ7t8MjCmSu"
+        },
+        {
+          "name": "Bank Account Number",
+          "type": "singleLineText",
+          "id": "fldcm43BDwmB88wvX"
+        },
+        {
+          "name": "Bank Account Name",
+          "type": "singleLineText",
+          "id": "fldNuDdsnRqA4Qnlm"
+        },
+        {
+          "name": "Bank Routing Number",
+          "type": "singleLineText",
+          "id": "fldB34Y1PFX4d9jae"
+        },
+        {
+          "name": "FPS ID",
+          "type": "singleLineText",
+          "id": "fldDtZYbCc1qOAYKP"
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "id": "fldw75yaGyx5ptEYJ"
+        },
+        {
+          "name": "Tutoring Packages",
+          "type": "multipleRecordLinks",
+          "id": "fldH6zCKkHs1WEtR9",
+          "options": "is_reversed=False linked_table_id='tbltI2NKTDqgXZZR9' prefers_single_record_link=False inverse_link_field_id='fldQAh72Vbi7GgukR' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Lessons",
+          "type": "multipleRecordLinks",
+          "id": "fldiAMJzlFe5U8tNX",
+          "options": "is_reversed=False linked_table_id='tblTACmaMETcjNDXU' prefers_single_record_link=False inverse_link_field_id='fldPp2S2AOj8zZoYy' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Payouts",
+          "type": "multipleRecordLinks",
+          "id": "fldzxSaUIK4QCrlIb",
+          "options": "is_reversed=False linked_table_id='tblq6dRgtcxIR2Ang' prefers_single_record_link=False inverse_link_field_id='fldVrRKD8SX9DIDao' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutor Application",
+          "type": "multipleRecordLinks",
+          "id": "fld9MwTpp4nHGls9N",
+          "options": "is_reversed=False linked_table_id='tbl1SJ2FXErQ3SPYr' prefers_single_record_link=False inverse_link_field_id='fldNnVGmbRnWaZt0h' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Parents",
+      "id": "tbl3WZiiqYZMQ4M4y",
+      "record_count": 9,
+      "record_count_display": "9",
+      "field_count": 17,
+      "fields": [
+        {
+          "name": "ID",
+          "type": "formula",
+          "id": "fld4dNgwk4GnVQ1vu",
+          "options": "formula='RECORD_ID()' is_valid=True referenced_field_ids=[] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "User ID",
+          "type": "multipleRecordLinks",
+          "id": "fld4x8exhFXt3pyEM",
+          "options": "is_reversed=False linked_table_id='tbl3n9FwcG1fntNNm' prefers_single_record_link=True inverse_link_field_id='fldxiCqtyn1bbIpwX' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Full Name",
+          "type": "multipleLookupValues",
+          "id": "fldKPocj2GnqWXq4N",
+          "options": "field_id_in_linked_table='fldpbSeszjjotsFD6' is_valid=True record_link_field_id='fld4x8exhFXt3pyEM' result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Email",
+          "type": "multipleLookupValues",
+          "id": "fldLMaXBh0bUb3h2r",
+          "options": "field_id_in_linked_table='fldG8yNm2bbHG38Oy' is_valid=True record_link_field_id='fld4x8exhFXt3pyEM' result=EmailFieldConfig(type='email')"
+        },
+        {
+          "name": "Phone",
+          "type": "multipleLookupValues",
+          "id": "fldhtViYbOKTmP7bD",
+          "options": "field_id_in_linked_table='fldOJjSJjKvhce5y9' is_valid=True record_link_field_id='fld4x8exhFXt3pyEM' result=PhoneNumberFieldConfig(type='phoneNumber')"
+        },
+        {
+          "name": "Billing Address Line 1",
+          "type": "singleLineText",
+          "id": "fldls67WHoF9lS2GH"
+        },
+        {
+          "name": "Billing Address Line 2",
+          "type": "singleLineText",
+          "id": "fldHLBz7TawFZooR6"
+        },
+        {
+          "name": "Billing District/City",
+          "type": "singleLineText",
+          "id": "fldZVWRflZSeKs5UY"
+        },
+        {
+          "name": "Billing State/Region",
+          "type": "singleLineText",
+          "id": "fldJWxmmx22wgAlXz"
+        },
+        {
+          "name": "Billing Postal Code",
+          "type": "singleLineText",
+          "id": "fldV3gmsjEsN8cx8V"
+        },
+        {
+          "name": "Billing Country",
+          "type": "singleLineText",
+          "id": "fldNOh75W0E8kB38u"
+        },
+        {
+          "name": "Billing Address",
+          "type": "formula",
+          "id": "fld5fUia4HluWfpDU",
+          "options": "formula='IF({fldls67WHoF9lS2GH},\\n  {fldls67WHoF9lS2GH} &\\n    IF({fldHLBz7TawFZooR6}, \"\\\\n\" & {fldHLBz7TawFZooR6}, \"\") &\\n    IF({fldZVWRflZSeKs5UY}, \"\\\\n\" & {fldZVWRflZSeKs5UY}, \"\") &\\n    IF({fldJWxmmx22wgAlXz}, \", \" & {fldJWxmmx22wgAlXz}, \"\") &\\n    IF({fldV3gmsjEsN8cx8V}, \" \" & {fldV3gmsjEsN8cx8V}, \"\") &\\n    IF({fldNOh75W0E8kB38u}, \"\\\\n\" & {fldNOh75W0E8kB38u}, \"\"),\\n  \"\"\\n)' is_valid=True referenced_field_ids=['fldls67WHoF9lS2GH', 'fldHLBz7TawFZooR6', 'fldZVWRflZSeKs5UY', 'fldJWxmmx22wgAlXz', 'fldV3gmsjEsN8cx8V', 'fldNOh75W0E8kB38u'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "id": "fldhR5scylKROrtfF"
+        },
+        {
+          "name": "Children",
+          "type": "multipleRecordLinks",
+          "id": "fldwmyCn3dSmaWamK",
+          "options": "is_reversed=False linked_table_id='tblRBe3k3Mm5C3sHY' prefers_single_record_link=False inverse_link_field_id='fldYatY8TaVYwlf9L' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Payments",
+          "type": "multipleRecordLinks",
+          "id": "fldNpoMkDtPevaQp4",
+          "options": "is_reversed=False linked_table_id='tblMBGMmc26P304WB' prefers_single_record_link=False inverse_link_field_id='fld4lvluCf52j2lWf' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutoring Packages",
+          "type": "multipleRecordLinks",
+          "id": "fldHlcR7LQ3sJtBkE",
+          "options": "is_reversed=False linked_table_id='tbltI2NKTDqgXZZR9' prefers_single_record_link=False inverse_link_field_id='fldUcnOee0AF6SMvK' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Leads",
+          "type": "multipleRecordLinks",
+          "id": "fld8sQydxLAy9t6Tl",
+          "options": "is_reversed=False linked_table_id='tblwxWsoR0AKjAN3M' prefers_single_record_link=False inverse_link_field_id='fld2P0tZzaGxUoylZ' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Students",
+      "id": "tblRBe3k3Mm5C3sHY",
+      "record_count": 12,
+      "record_count_display": "12",
+      "field_count": 36,
+      "fields": [
+        {
+          "name": "ID",
+          "type": "formula",
+          "id": "fldN0llU0fSFB2yUm",
+          "options": "formula='RECORD_ID()' is_valid=True referenced_field_ids=[] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "User ID",
+          "type": "multipleRecordLinks",
+          "id": "fldck80roRWepAI0L",
+          "options": "is_reversed=False linked_table_id='tbl3n9FwcG1fntNNm' prefers_single_record_link=True inverse_link_field_id='fldTm5as7LmHNjN46' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Student Dependency",
+          "type": "multipleLookupValues",
+          "id": "fldG3V5DmRC3MQGe3",
+          "options": "field_id_in_linked_table='fldmMqGUA14mQixFp' is_valid=True record_link_field_id='fldck80roRWepAI0L' result=SingleSelectFieldConfig(type='singleSelect', options=SingleSelectFieldOptions(choices=[Choice(id='selv7ZAJKQpJQm4xv', name='Parent', color='blueLight2'), Choice(id='selZ4pIYxzkZOisB3', name='Student (Independent)', color='cyanLight2'), Choice(id='selkEe0FaUY16B8i8', name='Student (Dependent)', color='tealLight2'), Choice(id='selytn8qEjoviopVc', name='Tutor', color='greenLight2')]))"
+        },
+        {
+          "name": "Parents",
+          "type": "multipleRecordLinks",
+          "id": "fldYatY8TaVYwlf9L",
+          "options": "is_reversed=False linked_table_id='tbl3WZiiqYZMQ4M4y' prefers_single_record_link=False inverse_link_field_id='fldwmyCn3dSmaWamK' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Full Name",
+          "type": "multipleLookupValues",
+          "id": "fldGGmW5hVDQCFr67",
+          "options": "field_id_in_linked_table='fldpbSeszjjotsFD6' is_valid=True record_link_field_id='fldck80roRWepAI0L' result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Email",
+          "type": "multipleLookupValues",
+          "id": "fldlbaklN4E4ArLqa",
+          "options": "field_id_in_linked_table='fldG8yNm2bbHG38Oy' is_valid=True record_link_field_id='fldck80roRWepAI0L' result=EmailFieldConfig(type='email')"
+        },
+        {
+          "name": "Phone",
+          "type": "multipleLookupValues",
+          "id": "fldcoSl6gfwf1A6wS",
+          "options": "field_id_in_linked_table='fldOJjSJjKvhce5y9' is_valid=True record_link_field_id='fldck80roRWepAI0L' result=PhoneNumberFieldConfig(type='phoneNumber')"
+        },
+        {
+          "name": "Grade/Year",
+          "type": "singleSelect",
+          "id": "fldoes5iOmhyusu0C",
+          "options": "choices=[Choice(id='selEpMxKuvHPO1Ar7', name='Reception (R)', color='blueLight2'), Choice(id='sel9SdBvfNtWpKM3X', name='Reception 1 (R1)', color='cyanLight2'), Choice(id='selQKpATzZN99pkOV', name='Reception 2 (R2)', color='tealLight2'), Choice(id='selzubSE4e4kFylSB', name='Kindergarten (K)', color='greenLight2'), Choice(id='sel8C4UMQ2BuOX66j', name='Primary 1 (P1)', color='yellowLight2'), Choice(id='selIdvObdqkwBAKSO', name='Primary 2 (P2)', color='orangeLight2'), Choice(id='seliE8gcGOVwFI8QY', name='Primary 3 (P3)', color='redLight2'), Choice(id='selICgRypa62qB2lo', name='Primary 4 (P4)', color='pinkLight2'), Choice(id='sel8LCcomeByzx1AE', name='Primary 5 (P5)', color='purpleLight2'), Choice(id='selkUrhB5EWA3vzBw', name='Primary 6 (P6)', color='grayLight2'), Choice(id='selai1IF7FrkTGdcK', name='Form 1 (F1)', color='blueLight1'), Choice(id='sele71CqqCjmcctXP', name='Form 2 (F2)', color='cyanLight1'), Choice(id='sel9YBNAl8r3KU5nQ', name='Form 3 (F3)', color='tealLight1'), Choice(id='sel7eUJYRh03lscrg', name='Form 4 (F4)', color='greenLight1'), Choice(id='selDUkEXFjSoorFCp', name='Form 5 (F5)', color='yellowLight1'), Choice(id='selhStAyKbpmLh6Ee', name='Form 6 (F6)', color='orangeLight1'), Choice(id='selYlr5gH4PCKzqDA', name='Year 1', color='redLight1'), Choice(id='selFB1u4gns8rMsEh', name='Year 2', color='pinkLight1'), Choice(id='selNcYHWhxMTVM2f9', name='Year 3', color='purpleLight1'), Choice(id='seloO9HjlSubr1SYM', name='Year 4', color='grayLight1'), Choice(id='selDbbGUwoVbYVkAh', name='Year 5', color='blueBright'), Choice(id='selG3dFlaoBLgiARn', name='Year 6', color='cyanBright'), Choice(id='selsMwmHJBr7QoJ8x', name='Year 7', color='tealBright'), Choice(id='selQiVXwDYvIvNqrx', name='Year 8', color='greenBright'), Choice(id='selXgVNK1xcs5ic0m', name='Year 9', color='yellowBright'), Choice(id='sel8pQvzJZ2DDKyO7', name='Year 10', color='orangeBright'), Choice(id='selX49JKCAQUqstgL', name='Year 11', color='redBright'), Choice(id='selpovRHK6cDEa37d', name='Year 12', color='pinkBright'), Choice(id='selsK97DUOoA79FQ4', name='Year 13', color='purpleBright'), Choice(id='selGpiOXdtM2UDpaZ', name='Grade 1', color='grayBright'), Choice(id='selOvtN92Ypv1zwPV', name='Grade 2', color='blueDark1'), Choice(id='selwoPd5Oi7n8pJys', name='Grade 3', color='cyanDark1'), Choice(id='selkx0MU8WyDvkHnu', name='Grade 4', color='tealDark1'), Choice(id='sel5WvYnJpOz2Ex8D', name='Grade 5', color='greenDark1'), Choice(id='selS2wiF12PEDZN5X', name='Grade 6', color='yellowDark1'), Choice(id='selLNvF3PXuNykDg8', name='Grade 7', color='orangeDark1'), Choice(id='selNtU4GnviK0b9Vq', name='Grade 8', color='redDark1'), Choice(id='selcLxoJuglIb9Z8G', name='Grade 9', color='pinkDark1'), Choice(id='selSUJhRr6aqKfEuw', name='Grade 10', color='purpleDark1'), Choice(id='selEbVgE2lgRZF5Hz', name='Grade 11', color='grayDark1'), Choice(id='selM9WezUX9O7FEw8', name='Grade 12', color='blueLight2'), Choice(id='sel908bm0IM3MKIZQ', name='Year 1 (University)', color='cyanLight2'), Choice(id='seldl2iuWFZBh7bwv', name='Year 2 (University)', color='tealLight2'), Choice(id='selYQArQNR62NlLwM', name='Year 3 (University)', color='greenLight2'), Choice(id='selhFOVWJZje4ASfg', name='Year 4 (University)', color='yellowLight2')]"
+        },
+        {
+          "name": "School",
+          "type": "multipleRecordLinks",
+          "id": "fldCKPSxYXsDGrqML",
+          "options": "is_reversed=False linked_table_id='tblSOc61sKiB8oFpI' prefers_single_record_link=False inverse_link_field_id='fldT2HQVe55giVLQl' view_id_for_record_selection='viwM7E5PVE19G9GQZ'"
+        },
+        {
+          "name": "Requested Subjects",
+          "type": "multipleRecordLinks",
+          "id": "fldMt8NUYiYKEPZKI",
+          "options": "is_reversed=False linked_table_id='tblFxN9BdHM8iLXd1' prefers_single_record_link=False inverse_link_field_id='fld3UGeSbHYESwgBK' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Date of Birth",
+          "type": "date",
+          "id": "fldvuzmAFiEZtT6uz",
+          "options": "date_format=DateFormat(format='l', name='local')"
+        },
+        {
+          "name": "Learning Preferences",
+          "type": "multilineText",
+          "id": "fldGfYgU84381UwOs"
+        },
+        {
+          "name": "Academic Goals",
+          "type": "multilineText",
+          "id": "fldZN6c7s4x7nnLy5"
+        },
+        {
+          "name": "Special Accommodations",
+          "type": "multilineText",
+          "id": "fldiwVqjb4eVXOwPR"
+        },
+        {
+          "name": "Preferred Days and Times",
+          "type": "singleLineText",
+          "id": "fldi1acdabqA4ZNuY"
+        },
+        {
+          "name": "Preferred Frequency",
+          "type": "singleLineText",
+          "id": "flduGFksW3v4unq3j"
+        },
+        {
+          "name": "Preferred Modes",
+          "type": "multipleSelects",
+          "id": "fldkY6L8ocMQvwpsS",
+          "options": "choices=[Choice(id='selgTkMkiQshMJqFc', name='Online', color='blueLight2'), Choice(id='selBlk4AmPyyWSW8l', name='In-person', color='cyanLight2')]"
+        },
+        {
+          "name": "Tutoring Location Address Line 1",
+          "type": "singleLineText",
+          "id": "fldpLgMbYMx0tSgbH"
+        },
+        {
+          "name": "Tutoring Location Address Line 2",
+          "type": "singleLineText",
+          "id": "fldizpuRqBxNssCRc"
+        },
+        {
+          "name": "Tutoring Location District/City",
+          "type": "singleLineText",
+          "id": "fldmnYvQpEYxTQpWH"
+        },
+        {
+          "name": "Tutoring Location State/Region",
+          "type": "singleLineText",
+          "id": "fld5u0S3oxvVxipv3"
+        },
+        {
+          "name": "Tutoring Location Postal Code",
+          "type": "singleLineText",
+          "id": "fldlDBOO2zMzdzly7"
+        },
+        {
+          "name": "Tutoring Location Country",
+          "type": "singleLineText",
+          "id": "fldAatkSPx6WFXior"
+        },
+        {
+          "name": "Tutoring Location Address",
+          "type": "formula",
+          "id": "fldm3naZdA9gVBLw0",
+          "options": "formula='IF({fldpLgMbYMx0tSgbH},\\n  {fldpLgMbYMx0tSgbH} &\\n  IF({fldizpuRqBxNssCRc}, \"\\\\n\" & {fldizpuRqBxNssCRc}, \"\") &\\n  IF({fldmnYvQpEYxTQpWH}, \"\\\\n\" & {fldmnYvQpEYxTQpWH}, \"\") &\\n  IF({fld5u0S3oxvVxipv3}, \", \" & {fld5u0S3oxvVxipv3}, \"\") &\\n  IF({fldlDBOO2zMzdzly7}, \" \" & {fldlDBOO2zMzdzly7}, \"\") &\\n  IF({fldAatkSPx6WFXior}, \"\\\\n\" & {fldAatkSPx6WFXior}, \"\"),\\n  \"\"\\n)' is_valid=True referenced_field_ids=['fldpLgMbYMx0tSgbH', 'fldizpuRqBxNssCRc', 'fldmnYvQpEYxTQpWH', 'fld5u0S3oxvVxipv3', 'fldlDBOO2zMzdzly7', 'fldAatkSPx6WFXior'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Billing Address Line 1",
+          "type": "singleLineText",
+          "id": "fld36KzFppeiBcRPG"
+        },
+        {
+          "name": "Billing Address Line 2",
+          "type": "singleLineText",
+          "id": "fld41E7XVUTCOtxHR"
+        },
+        {
+          "name": "Billing District/City",
+          "type": "singleLineText",
+          "id": "flddBsFvrcoB3p73g"
+        },
+        {
+          "name": "Billing State/Region",
+          "type": "singleLineText",
+          "id": "fldi2GOCsjgYjKRAS"
+        },
+        {
+          "name": "Billing Postal Code",
+          "type": "singleLineText",
+          "id": "fldLREp88KDJRSTVU"
+        },
+        {
+          "name": "Billing Country",
+          "type": "singleLineText",
+          "id": "fldglVro4IbseWGpp"
+        },
+        {
+          "name": "Billing Address",
+          "type": "formula",
+          "id": "fldHCXcc4J1Bskx1c",
+          "options": "formula='IF({fld36KzFppeiBcRPG},\\n  {fld36KzFppeiBcRPG} &\\n  IF({fld41E7XVUTCOtxHR}, \"\\\\n\" & {fld41E7XVUTCOtxHR}, \"\") &\\n  IF({flddBsFvrcoB3p73g}, \"\\\\n\" & {flddBsFvrcoB3p73g}, \"\") &\\n  IF({fldi2GOCsjgYjKRAS}, \", \" & {fldi2GOCsjgYjKRAS}, \"\") &\\n  IF({fldLREp88KDJRSTVU}, \" \" & {fldLREp88KDJRSTVU}, \"\") &\\n  IF({fldglVro4IbseWGpp}, \"\\\\n\" & {fldglVro4IbseWGpp}, \"\"),\\n  \"\"\\n)' is_valid=True referenced_field_ids=['fld36KzFppeiBcRPG', 'fld41E7XVUTCOtxHR', 'flddBsFvrcoB3p73g', 'fldi2GOCsjgYjKRAS', 'fldLREp88KDJRSTVU', 'fldglVro4IbseWGpp'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "id": "fldwgYOIuNu3dKSvz"
+        },
+        {
+          "name": "Tutoring Packages",
+          "type": "multipleRecordLinks",
+          "id": "fldnjDgKn6oLY4WVM",
+          "options": "is_reversed=False linked_table_id='tbltI2NKTDqgXZZR9' prefers_single_record_link=False inverse_link_field_id='fld8YRXWP1JvwoeoJ' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Payments",
+          "type": "multipleRecordLinks",
+          "id": "fldoYR5zttvITpwFH",
+          "options": "is_reversed=False linked_table_id='tblMBGMmc26P304WB' prefers_single_record_link=False inverse_link_field_id='fldyF9sJ7WhOwBd0M' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Lessons",
+          "type": "multipleRecordLinks",
+          "id": "fldwfPz6sEObVeGvR",
+          "options": "is_reversed=False linked_table_id='tblTACmaMETcjNDXU' prefers_single_record_link=False inverse_link_field_id='fldbP9S45B5vZm0I7' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Leads",
+          "type": "multipleRecordLinks",
+          "id": "fldzadqOnacWK5tXU",
+          "options": "is_reversed=False linked_table_id='tblwxWsoR0AKjAN3M' prefers_single_record_link=False inverse_link_field_id='fldMFbdPjOj57CSIC' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Subjects",
+      "id": "tblFxN9BdHM8iLXd1",
+      "record_count": 12,
+      "record_count_display": "12",
+      "field_count": 11,
+      "fields": [
+        {
+          "name": "Subject Name",
+          "type": "singleLineText",
+          "id": "fld6ihaduHI1CId26"
+        },
+        {
+          "name": "Curriculum",
+          "type": "singleSelect",
+          "id": "fldsPFRIG1eqQ4P9q",
+          "options": "choices=[Choice(id='selwogZot2qkQrUBL', name='AP', color='blueLight2'), Choice(id='selkE8Vnd9sI840Di', name='IB', color='cyanLight2'), Choice(id='selhFUT7dJ0uTWAi4', name='SAT', color='tealLight2'), Choice(id='selcEoCSwYeSLXg5n', name='ACT', color='greenLight2'), Choice(id='selnUstnu8AhaWZtV', name='A-Level', color='yellowLight2'), Choice(id='selwGoEcN94Ur7Xva', name='HKDSE', color='orangeLight2'), Choice(id='selMbvwIsuFB5nphY', name='IGCSE', color='redLight2'), Choice(id='selnFZTSxh1jqfQVy', name='Other', color='pinkLight2')]"
+        },
+        {
+          "name": "Subject Group",
+          "type": "singleSelect",
+          "id": "fldThzz4cEizJXYiK",
+          "options": "choices=[Choice(id='seleyARawildCnvTI', name='STEM', color='blueLight2'), Choice(id='selGgjqTqEAhEW1Ep', name='Languages', color='cyanLight2'), Choice(id='selU0cHanXCgcKIjh', name='Arts', color='tealLight2'), Choice(id='selu6OTq3U6IfYRSV', name='Humanities', color='greenLight2'), Choice(id='selypxtK8ur0oO7CN', name='Business', color='yellowLight2'), Choice(id='seldnCZQUBFwKijLF', name='Test Prep', color='orangeLight2'), Choice(id='selsSYn4bW1Oe9Cec', name='Other', color='redLight2')]"
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "id": "fldcw6iWHNUnS9f85"
+        },
+        {
+          "name": "Link to Tutors",
+          "type": "multipleRecordLinks",
+          "id": "fldnGd43Tx0XH5JR4",
+          "options": "is_reversed=False linked_table_id='tblv7MknTwat2Ddo5' prefers_single_record_link=False inverse_link_field_id='fldTBIymheJOi50jE' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Link to Students",
+          "type": "multipleRecordLinks",
+          "id": "fld3UGeSbHYESwgBK",
+          "options": "is_reversed=False linked_table_id='tblRBe3k3Mm5C3sHY' prefers_single_record_link=False inverse_link_field_id='fldMt8NUYiYKEPZKI' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Link to Tutoring Packages",
+          "type": "multipleRecordLinks",
+          "id": "fldZX3Zgt714g4bQ5",
+          "options": "is_reversed=False linked_table_id='tbltI2NKTDqgXZZR9' prefers_single_record_link=False inverse_link_field_id='fldtfuF5VRcNIF79j' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutor Applications",
+          "type": "multipleRecordLinks",
+          "id": "fldqGSiijC8853k8s",
+          "options": "is_reversed=False linked_table_id='tbl1SJ2FXErQ3SPYr' prefers_single_record_link=False inverse_link_field_id='fldkl7lW3tP46CnTQ' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Leads",
+          "type": "multipleRecordLinks",
+          "id": "fldXwDEN8MXqpq4VR",
+          "options": "is_reversed=False linked_table_id='tblwxWsoR0AKjAN3M' prefers_single_record_link=False inverse_link_field_id='fld4V0WV9sytPqN6K' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Field 10",
+          "type": "singleLineText",
+          "id": "fldLQxA6Ue3cnV7th"
+        },
+        {
+          "name": "Lessons",
+          "type": "multipleRecordLinks",
+          "id": "fld2kHU7flkMnazKJ",
+          "options": "is_reversed=False linked_table_id='tblTACmaMETcjNDXU' prefers_single_record_link=False inverse_link_field_id='fldbA8IA8gU3KR5rq' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Educational Institutions",
+      "id": "tblSOc61sKiB8oFpI",
+      "record_count": 18,
+      "record_count_display": "18",
+      "field_count": 10,
+      "fields": [
+        {
+          "name": "Institution Name",
+          "type": "singleLineText",
+          "id": "fldGwJNFvd7wnj2fA"
+        },
+        {
+          "name": "Type",
+          "type": "multipleSelects",
+          "id": "fldfayg5MujVnlitr",
+          "options": "choices=[Choice(id='selHWaPl6kR1I5bTN', name='Primary', color='blueLight2'), Choice(id='selAhzrVZ2XlLQHAi', name='Secondary', color='tealLight2'), Choice(id='seljDH0ekkSuEApMV', name='University', color='cyanLight2')]"
+        },
+        {
+          "name": "Country",
+          "type": "singleLineText",
+          "id": "fld9aYSaKwGfCVqUx"
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "id": "fld0wjEq92obl1YDD"
+        },
+        {
+          "name": "Link to Tutors (for Primary/Secondary School)",
+          "type": "multipleRecordLinks",
+          "id": "fldu6pUvy1RT44wk2",
+          "options": "is_reversed=False linked_table_id='tblv7MknTwat2Ddo5' prefers_single_record_link=False inverse_link_field_id='fldGbpD3X2ModN7nD' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Link to Tutors (for University)",
+          "type": "multipleRecordLinks",
+          "id": "fldcWtfHTKDPlr5KY",
+          "options": "is_reversed=False linked_table_id='tblv7MknTwat2Ddo5' prefers_single_record_link=False inverse_link_field_id='fldQ1doVkDRBIPkVy' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Link to Students",
+          "type": "multipleRecordLinks",
+          "id": "fldT2HQVe55giVLQl",
+          "options": "is_reversed=False linked_table_id='tblRBe3k3Mm5C3sHY' prefers_single_record_link=False inverse_link_field_id='fldCKPSxYXsDGrqML' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutor Applications",
+          "type": "multipleRecordLinks",
+          "id": "fldq5xZo55hyTDCtm",
+          "options": "is_reversed=False linked_table_id='tbl1SJ2FXErQ3SPYr' prefers_single_record_link=False inverse_link_field_id='fld2hMOiA8EmsIeHt' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutor Applications copy",
+          "type": "multipleRecordLinks",
+          "id": "fldxPtZnxVGqfCnvo",
+          "options": "is_reversed=False linked_table_id='tbl1SJ2FXErQ3SPYr' prefers_single_record_link=False inverse_link_field_id='fldAvKPvdPHfFEt0K' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Leads",
+          "type": "multipleRecordLinks",
+          "id": "fldogETZO5WEpBmUo",
+          "options": "is_reversed=False linked_table_id='tblwxWsoR0AKjAN3M' prefers_single_record_link=False inverse_link_field_id='fld8htCthIg5lMq9D' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Tutoring Packages",
+      "id": "tbltI2NKTDqgXZZR9",
+      "record_count": 12,
+      "record_count_display": "12",
+      "field_count": 54,
+      "fields": [
+        {
+          "name": "Package ID",
+          "type": "formula",
+          "id": "fldbsZTAfiau2atoG",
+          "options": "formula='IF({fldt0FSRizUwr5AxI}, {fldt0FSRizUwr5AxI}, \"PKG-\" & YEAR({fldFxFIenwloLlPcE}) & \"-\" & RIGHT(\"0000\" & {fldVQicz8SlZBnjBb}, 4))' is_valid=True referenced_field_ids=['fldt0FSRizUwr5AxI', 'fldFxFIenwloLlPcE', 'fldVQicz8SlZBnjBb'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Migrated Package ID",
+          "type": "singleLineText",
+          "id": "fldt0FSRizUwr5AxI"
+        },
+        {
+          "name": "Autonumber Field",
+          "type": "autoNumber",
+          "id": "fldVQicz8SlZBnjBb"
+        },
+        {
+          "name": "Created At",
+          "type": "createdTime",
+          "id": "fldFxFIenwloLlPcE"
+        },
+        {
+          "name": "Confirmation Date",
+          "type": "dateTime",
+          "id": "fldIQpsVznOfPvJwh",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Expiration Date",
+          "type": "formula",
+          "id": "fldP7Fp2BJgwYiYSe",
+          "options": "formula=\"IF(\\n  {fldNaFrJ8iY7gjObX} < 8,\\n    DATEADD({fldIQpsVznOfPvJwh}, 2, 'months'),\\n    IF(\\n      AND({fldNaFrJ8iY7gjObX} >= 8, {fldNaFrJ8iY7gjObX} < 12),\\n        DATEADD({fldIQpsVznOfPvJwh}, 4, 'months'),\\n        DATEADD({fldIQpsVznOfPvJwh}, 6, 'months')\\n    )\\n)\" is_valid=True referenced_field_ids=['fldNaFrJ8iY7gjObX', 'fldIQpsVznOfPvJwh'] result=DateFieldConfig(type='date', options=DateFieldOptions(date_format=DateFormat(format='LL', name='friendly')))"
+        },
+        {
+          "name": "Completion Date",
+          "type": "date",
+          "id": "fldyy5BGusTlCg5l4",
+          "options": "date_format=DateFormat(format='LL', name='friendly')"
+        },
+        {
+          "name": "Student",
+          "type": "multipleRecordLinks",
+          "id": "fld8YRXWP1JvwoeoJ",
+          "options": "is_reversed=False linked_table_id='tblRBe3k3Mm5C3sHY' prefers_single_record_link=True inverse_link_field_id='fldnjDgKn6oLY4WVM' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Parents",
+          "type": "multipleRecordLinks",
+          "id": "fldUcnOee0AF6SMvK",
+          "options": "is_reversed=False linked_table_id='tbl3WZiiqYZMQ4M4y' prefers_single_record_link=False inverse_link_field_id='fldHlcR7LQ3sJtBkE' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutor",
+          "type": "multipleRecordLinks",
+          "id": "fldQAh72Vbi7GgukR",
+          "options": "is_reversed=False linked_table_id='tblv7MknTwat2Ddo5' prefers_single_record_link=True inverse_link_field_id='fldH6zCKkHs1WEtR9' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Subjects",
+          "type": "multipleRecordLinks",
+          "id": "fldtfuF5VRcNIF79j",
+          "options": "is_reversed=False linked_table_id='tblFxN9BdHM8iLXd1' prefers_single_record_link=False inverse_link_field_id='fldZX3Zgt714g4bQ5' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Mode",
+          "type": "multipleSelects",
+          "id": "fldTcCXYkFFwwB8cT",
+          "options": "choices=[Choice(id='selDe3QGHbaVLqAIS', name='Online', color='blueLight2'), Choice(id='selbSu4duOlweYQU8', name='In-person', color='cyanLight2')]"
+        },
+        {
+          "name": "Base Package Hours",
+          "type": "number",
+          "id": "fldNaFrJ8iY7gjObX",
+          "options": "precision=1"
+        },
+        {
+          "name": "Hourly Lesson Rate",
+          "type": "currency",
+          "id": "fldB00QX3GdOI8yBB",
+          "options": "precision=2 symbol='HKD'"
+        },
+        {
+          "name": "Hourly Tutor Income",
+          "type": "currency",
+          "id": "fldpkuegXynGRE48G",
+          "options": "precision=2 symbol='HKD'"
+        },
+        {
+          "name": "Package Status",
+          "type": "singleSelect",
+          "id": "fld3ByY7eHcnk5wTx",
+          "options": "choices=[Choice(id='selTmen1exWDoW8yF', name='In Progress', color='blueLight2'), Choice(id='sel5gAQ8xGwFUSLXc', name='Paused', color='cyanLight2'), Choice(id='selKWDT5u2BgmqFM0', name='Completed', color='tealLight2'), Choice(id='selOQDcnayEWlgLAb', name='Resolved', color='greenLight2')]"
+        },
+        {
+          "name": "Total Base Package Price",
+          "type": "formula",
+          "id": "fldl0dNbCtgkVgIHJ",
+          "options": "formula='{fldNaFrJ8iY7gjObX} * {fldB00QX3GdOI8yBB}' is_valid=True referenced_field_ids=['fldNaFrJ8iY7gjObX', 'fldB00QX3GdOI8yBB'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Expected Base Package Tutor Earnings",
+          "type": "formula",
+          "id": "fldPglN3vVVwgqjHL",
+          "options": "formula='{fldNaFrJ8iY7gjObX} * {fldpkuegXynGRE48G}' is_valid=True referenced_field_ids=['fldNaFrJ8iY7gjObX', 'fldpkuegXynGRE48G'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Notes",
+          "type": "richText",
+          "id": "fldT1OORbUicFlUIA"
+        },
+        {
+          "name": "Pre-Migration Hours Delivered",
+          "type": "number",
+          "id": "fldyE80Zv053Konsd",
+          "options": "precision=2"
+        },
+        {
+          "name": "Lessons",
+          "type": "multipleRecordLinks",
+          "id": "fldWG9nK1O8gnR6Zw",
+          "options": "is_reversed=False linked_table_id='tblTACmaMETcjNDXU' prefers_single_record_link=False inverse_link_field_id='fldaTvnJdtWNMxh12' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Hours Delivered",
+          "type": "rollup",
+          "id": "fldvxlOktYJ1vkOZ5",
+          "options": "field_id_in_linked_table='fld3LdumeLrOol8Y5' is_valid=True record_link_field_id='fldWG9nK1O8gnR6Zw' referenced_field_ids=[] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=2))"
+        },
+        {
+          "name": "Total Hours Delivered",
+          "type": "formula",
+          "id": "fldYMRJLXUZ8jI6ps",
+          "options": "formula='IF({fldyE80Zv053Konsd}, {fldyE80Zv053Konsd}, 0) + {fldvxlOktYJ1vkOZ5}' is_valid=True referenced_field_ids=['fldyE80Zv053Konsd', 'fldvxlOktYJ1vkOZ5'] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=2))"
+        },
+        {
+          "name": "Hours Remaining",
+          "type": "formula",
+          "id": "fldUOOB8olM1zs8La",
+          "options": "formula='{fldNaFrJ8iY7gjObX} - {fldYMRJLXUZ8jI6ps}' is_valid=True referenced_field_ids=['fldNaFrJ8iY7gjObX', 'fldYMRJLXUZ8jI6ps'] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=0))"
+        },
+        {
+          "name": "Over-Delivered Hours",
+          "type": "formula",
+          "id": "fldCHL8SSSOqyue8J",
+          "options": "formula='MAX(0, {fldYMRJLXUZ8jI6ps} - {fldNaFrJ8iY7gjObX})' is_valid=True referenced_field_ids=['fldYMRJLXUZ8jI6ps', 'fldNaFrJ8iY7gjObX'] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=0))"
+        },
+        {
+          "name": "Accrued Tutoring Earnings",
+          "type": "formula",
+          "id": "fldNdtYWF5aLi8o9F",
+          "options": "formula='{fldYMRJLXUZ8jI6ps} * {fldpkuegXynGRE48G}' is_valid=True referenced_field_ids=['fldYMRJLXUZ8jI6ps', 'fldpkuegXynGRE48G'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Accrued Transportation Reimbursement",
+          "type": "rollup",
+          "id": "fld0gZMewFkIj6FI0",
+          "options": "field_id_in_linked_table='fldUZhPpGzeoCSqGI' is_valid=True record_link_field_id='fldWG9nK1O8gnR6Zw' referenced_field_ids=[] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Accrued Late Cancellation Fees",
+          "type": "rollup",
+          "id": "fld68eqXcRLGBqiL3",
+          "options": "field_id_in_linked_table='fldfaHAfVOpIYvdHn' is_valid=True record_link_field_id='fldWG9nK1O8gnR6Zw' referenced_field_ids=[] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Unadjusted Accrued Additional Fees",
+          "type": "formula",
+          "id": "fldb4ZolSvyDMhEFN",
+          "options": "formula='{fld0gZMewFkIj6FI0} + {fld68eqXcRLGBqiL3} + ({fldCHL8SSSOqyue8J} * {fldB00QX3GdOI8yBB})' is_valid=True referenced_field_ids=['fld0gZMewFkIj6FI0', 'fld68eqXcRLGBqiL3', 'fldCHL8SSSOqyue8J', 'fldB00QX3GdOI8yBB'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Additional Fees Adjustment",
+          "type": "currency",
+          "id": "fldlR5gRJ8PnlHJk0",
+          "options": "precision=2 symbol='HKD'"
+        },
+        {
+          "name": "Additional Fees Adjustment Note",
+          "type": "multilineText",
+          "id": "fld6DUTP9igBd8mH5"
+        },
+        {
+          "name": "Total Accrued Additional Fees",
+          "type": "formula",
+          "id": "fldiA8V2rgeqTwnQa",
+          "options": "formula='{fldb4ZolSvyDMhEFN} + {fldlR5gRJ8PnlHJk0}' is_valid=True referenced_field_ids=['fldb4ZolSvyDMhEFN', 'fldlR5gRJ8PnlHJk0'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Payments",
+          "type": "multipleRecordLinks",
+          "id": "fldUKiSZcpMesSTMA",
+          "options": "is_reversed=False linked_table_id='tblMBGMmc26P304WB' prefers_single_record_link=False inverse_link_field_id='fldmlY7grdcFQj3Op' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Base Package Paid",
+          "type": "rollup",
+          "id": "fld2Jlb5U9d4mX8Nz",
+          "options": "field_id_in_linked_table='fldlUKnW9RaIcf17l' is_valid=True record_link_field_id='fldUKiSZcpMesSTMA' referenced_field_ids=[] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=0))"
+        },
+        {
+          "name": "Additional Fees Paid",
+          "type": "rollup",
+          "id": "fldNJTUSKMLBvfcVm",
+          "options": "field_id_in_linked_table='fldlUKnW9RaIcf17l' is_valid=True record_link_field_id='fldUKiSZcpMesSTMA' referenced_field_ids=[] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=0))"
+        },
+        {
+          "name": "All Payments Paid",
+          "type": "rollup",
+          "id": "fldbcZpLH0XDp2FNb",
+          "options": "field_id_in_linked_table='fldlUKnW9RaIcf17l' is_valid=True record_link_field_id='fldUKiSZcpMesSTMA' referenced_field_ids=[] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=0))"
+        },
+        {
+          "name": "Unadjusted Accrued Payout Amount",
+          "type": "formula",
+          "id": "fldwISUC1XHMXcy5N",
+          "options": "formula='{fldNdtYWF5aLi8o9F} + {fld0gZMewFkIj6FI0} + {fld68eqXcRLGBqiL3}' is_valid=True referenced_field_ids=['fldNdtYWF5aLi8o9F', 'fld0gZMewFkIj6FI0', 'fld68eqXcRLGBqiL3'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Payout Adjustment",
+          "type": "currency",
+          "id": "fldoyBgZ0i2qvSJrm",
+          "options": "precision=2 symbol='HKD'"
+        },
+        {
+          "name": "Payout Adjustment Note",
+          "type": "multilineText",
+          "id": "fldpOBVBSNX0g82RZ"
+        },
+        {
+          "name": "Total Accrued Payout Amount",
+          "type": "formula",
+          "id": "fldN18e784vpGjYVY",
+          "options": "formula='{fldwISUC1XHMXcy5N} + {fldoyBgZ0i2qvSJrm}' is_valid=True referenced_field_ids=['fldwISUC1XHMXcy5N', 'fldoyBgZ0i2qvSJrm'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Payout",
+          "type": "multipleRecordLinks",
+          "id": "flde7Kju3kIYVLAFc",
+          "options": "is_reversed=False linked_table_id='tblq6dRgtcxIR2Ang' prefers_single_record_link=False inverse_link_field_id='fldN5BFPWW1ggDmUP' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Payout Complete",
+          "type": "rollup",
+          "id": "fld5OqhwsVubc2evb",
+          "options": "field_id_in_linked_table='fldulCMpi374kFx5D' is_valid=True record_link_field_id='flde7Kju3kIYVLAFc' referenced_field_ids=[] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=0))"
+        },
+        {
+          "name": "Client Package Confirmation Email Sent At",
+          "type": "dateTime",
+          "id": "fldjcgshwcA8eLBol",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Tutor Package Confirmation Email Sent At",
+          "type": "dateTime",
+          "id": "fldIx0QGlc7UrLPSV",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Unverified Lessons Notification Sent At",
+          "type": "date",
+          "id": "fldQOCThGqfENgkaA",
+          "options": "date_format=DateFormat(format='l', name='local')"
+        },
+        {
+          "name": "Client Package Completion Email Sent At",
+          "type": "dateTime",
+          "id": "fldox5Rp82SoM1uzo",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Tutor Package Completion Email Sent At",
+          "type": "dateTime",
+          "id": "fldPIWV7avg3nVgPb",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Package Report PDF",
+          "type": "multipleAttachments",
+          "id": "fldzNqhM3lmMPsanc",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Package Report Generated At",
+          "type": "dateTime",
+          "id": "fldYrSXRfPboxg0Md",
+          "options": "time_zone='client' date_format=DateFormat(format='l', name='local') time_format=TimeFormat(format='h:mma', name='12hour')"
+        },
+        {
+          "name": "Admin Flag",
+          "type": "singleSelect",
+          "id": "fldotUAd3K6lGDJkS",
+          "options": "choices=[Choice(id='selAWZ5ERYGYoy2RO', name='Normal', color='blueLight2'), Choice(id='selBIIguBVYEQ8AnD', name='Follow-up Needed', color='cyanLight2'), Choice(id='seluu450fcaXbyZ28', name='Urgent Problem', color='tealLight2')]"
+        },
+        {
+          "name": "Admin Notes",
+          "type": "multilineText",
+          "id": "fldjIP3JvSP06Im0e"
+        },
+        {
+          "name": "Flagged At",
+          "type": "date",
+          "id": "fldkFUbXMnvsFIJrn",
+          "options": "date_format=DateFormat(format='l', name='local')"
+        },
+        {
+          "name": "Flagged By",
+          "type": "singleCollaborator",
+          "id": "fldXtAsg0TxbV6xQD"
+        },
+        {
+          "name": "Admin Notifications",
+          "type": "multipleRecordLinks",
+          "id": "fldPmgvnMLHcymc5J",
+          "options": "is_reversed=False linked_table_id='tbl4poo8mQLHNdHBA' prefers_single_record_link=False inverse_link_field_id='fldF5vC6kXuEiFFUj' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Lessons",
+      "id": "tblTACmaMETcjNDXU",
+      "record_count": 100,
+      "record_count_display": "100+",
+      "field_count": 37,
+      "fields": [
+        {
+          "name": "Lesson ID",
+          "type": "formula",
+          "id": "fldeyDjWsYwR6Y9Y8",
+          "options": "formula='\"LSN-\" & YEAR({fldvJy4dl48R9cZJB}) & \"-\" & RIGHT(\"0000\" & {fldCn3WmEpvLG5qvW}, 4)' is_valid=True referenced_field_ids=['fldvJy4dl48R9cZJB', 'fldCn3WmEpvLG5qvW'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Autonumber Field",
+          "type": "autoNumber",
+          "id": "fldCn3WmEpvLG5qvW"
+        },
+        {
+          "name": "Created At",
+          "type": "createdTime",
+          "id": "fldvJy4dl48R9cZJB"
+        },
+        {
+          "name": "Tutor",
+          "type": "multipleRecordLinks",
+          "id": "fldPp2S2AOj8zZoYy",
+          "options": "is_reversed=False linked_table_id='tblv7MknTwat2Ddo5' prefers_single_record_link=True inverse_link_field_id='fldiAMJzlFe5U8tNX' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Student",
+          "type": "multipleRecordLinks",
+          "id": "fldbP9S45B5vZm0I7",
+          "options": "is_reversed=False linked_table_id='tblRBe3k3Mm5C3sHY' prefers_single_record_link=True inverse_link_field_id='fldwfPz6sEObVeGvR' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutoring Package",
+          "type": "multipleRecordLinks",
+          "id": "fldaTvnJdtWNMxh12",
+          "options": "is_reversed=False linked_table_id='tbltI2NKTDqgXZZR9' prefers_single_record_link=True inverse_link_field_id='fldWG9nK1O8gnR6Zw' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Subjects",
+          "type": "multipleRecordLinks",
+          "id": "fldbA8IA8gU3KR5rq",
+          "options": "is_reversed=False linked_table_id='tblFxN9BdHM8iLXd1' prefers_single_record_link=False inverse_link_field_id='fld2kHU7flkMnazKJ' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Type",
+          "type": "singleSelect",
+          "id": "fldVjZwm93weWratY",
+          "options": "choices=[Choice(id='selJwHxHhwjiWP4W0', name='Regular Lesson', color='blueLight2'), Choice(id='selHvGvBDOrqyXN4r', name='Late Cancellation', color='cyanLight2')]"
+        },
+        {
+          "name": "Mode",
+          "type": "singleSelect",
+          "id": "fldHsq29nzevNFv4d",
+          "options": "choices=[Choice(id='sel7jkFgnYamQDNsd', name='Online', color='blueLight2'), Choice(id='selqg37sNIk6MBmqZ', name='In-person', color='cyanLight2')]"
+        },
+        {
+          "name": "Start Time",
+          "type": "dateTime",
+          "id": "fldjad3nYrPfZjAiy",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "End Time",
+          "type": "dateTime",
+          "id": "fld5Y5qMwEBaj0coC",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Hours Counted",
+          "type": "formula",
+          "id": "fld3LdumeLrOol8Y5",
+          "options": "formula=\"IF(AND({fldjad3nYrPfZjAiy}, {fld5Y5qMwEBaj0coC}), IF({fldVjZwm93weWratY} = 'Regular Lesson',\\n  ROUND(DATETIME_DIFF({fld5Y5qMwEBaj0coC}, {fldjad3nYrPfZjAiy}, 'minutes')/60*4, 0)/4,\\n  0\\n), BLANK())\" is_valid=True referenced_field_ids=['fldjad3nYrPfZjAiy', 'fld5Y5qMwEBaj0coC', 'fldVjZwm93weWratY'] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=0))"
+        },
+        {
+          "name": "Hourly Tutor Income",
+          "type": "multipleLookupValues",
+          "id": "fldlv0PYP1ve2WXPe",
+          "options": "field_id_in_linked_table='fldpkuegXynGRE48G' is_valid=True record_link_field_id='fldaTvnJdtWNMxh12' result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Topics Covered",
+          "type": "richText",
+          "id": "fldLvQ1avMpKsGqMN"
+        },
+        {
+          "name": "Progress Highlights",
+          "type": "richText",
+          "id": "fldunZTbTrqWEVwci"
+        },
+        {
+          "name": "Areas for Improvement",
+          "type": "richText",
+          "id": "fldyki8o2rHZQ7S8d"
+        },
+        {
+          "name": "Next Steps",
+          "type": "richText",
+          "id": "fldX2nvZl2UJ5u00G"
+        },
+        {
+          "name": "Lesson Plan Attachment",
+          "type": "multipleAttachments",
+          "id": "fldOY7V8Bl7rPvklc",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Lesson Notes Attachment",
+          "type": "multipleAttachments",
+          "id": "fldtXcw01og3cNQaZ",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Homework Attachment",
+          "type": "multipleAttachments",
+          "id": "fldjFr2ROo5IcoGgE",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Transportation Reimbursement",
+          "type": "currency",
+          "id": "fldUZhPpGzeoCSqGI",
+          "options": "precision=2 symbol='HKD'"
+        },
+        {
+          "name": "Transportation Receipts",
+          "type": "multipleAttachments",
+          "id": "fld2vwyqM7gkuqWdR",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Late Cancellation Fees",
+          "type": "formula",
+          "id": "fldfaHAfVOpIYvdHn",
+          "options": "formula='IF({fldVjZwm93weWratY} = \"Regular Lesson\", 0, 0.5 * {fldlv0PYP1ve2WXPe})' is_valid=True referenced_field_ids=['fldVjZwm93weWratY', 'fldlv0PYP1ve2WXPe'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Late Cancellation Reason",
+          "type": "multilineText",
+          "id": "fldvgrXPIQVNwYYuz"
+        },
+        {
+          "name": "Notes",
+          "type": "richText",
+          "id": "fldyIBrXGTHh2yzxJ"
+        },
+        {
+          "name": "Transportation Verified",
+          "type": "checkbox",
+          "id": "fld488vjNqZBmhUkI",
+          "options": "color='greenBright' icon='thumbsUp'"
+        },
+        {
+          "name": "Late Cancellation Verified",
+          "type": "checkbox",
+          "id": "fldChVN1vxIApY5wj",
+          "options": "color='greenBright' icon='thumbsUp'"
+        },
+        {
+          "name": "Over-Delivery Verified",
+          "type": "checkbox",
+          "id": "fld0fpXhiyHFQtSPb",
+          "options": "color='greenBright' icon='thumbsUp'"
+        },
+        {
+          "name": "Lesson Status",
+          "type": "singleSelect",
+          "id": "fldowEQdC4VnDwraR",
+          "options": "choices=[Choice(id='selPfiLgIWpz2sYj4', name='Pending Verification', color='blueLight2'), Choice(id='selH0aVjnLoTGAj9r', name='Verified', color='cyanLight2')]"
+        },
+        {
+          "name": "Lesson Report Status",
+          "type": "singleSelect",
+          "id": "fldjPkj1jJYgNcvT1",
+          "options": "choices=[Choice(id='sel79TxCdk4kPSZpm', name='Completed', color='cyanLight2'), Choice(id='selpUjkn7pJEJwham', name='Late', color='tealLight2')]"
+        },
+        {
+          "name": "Lesson Report Submitted At",
+          "type": "dateTime",
+          "id": "fldaMxTbFvIZIQP2P",
+          "options": "time_zone='utc' date_format=DateFormat(format='M/D/YYYY', name='us') time_format=TimeFormat(format='h:mma', name='12hour')"
+        },
+        {
+          "name": "Lesson Report PDF Generated At",
+          "type": "dateTime",
+          "id": "fldg4oadNHhSpn49E",
+          "options": "time_zone='utc' date_format=DateFormat(format='M/D/YYYY', name='us') time_format=TimeFormat(format='h:mma', name='12hour')"
+        },
+        {
+          "name": "Lesson Completion Email Sent At",
+          "type": "dateTime",
+          "id": "fldMzA3pshtAgyUH1",
+          "options": "time_zone='utc' date_format=DateFormat(format='M/D/YYYY', name='us') time_format=TimeFormat(format='h:mma', name='12hour')"
+        },
+        {
+          "name": "Last Reminder Sent At",
+          "type": "dateTime",
+          "id": "fldf6uMABC5AdicxK",
+          "options": "time_zone='utc' date_format=DateFormat(format='M/D/YYYY', name='us') time_format=TimeFormat(format='h:mma', name='12hour')"
+        },
+        {
+          "name": "Lesson Report PDF",
+          "type": "multipleAttachments",
+          "id": "fldk1GTj7EYlIAjlU",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Lesson Report PDF URL",
+          "type": "url",
+          "id": "fldXdE6162dhbiYbF"
+        },
+        {
+          "name": "Admin Notifications",
+          "type": "multipleRecordLinks",
+          "id": "fldXMbPCddwmjfAwS",
+          "options": "is_reversed=False linked_table_id='tbl4poo8mQLHNdHBA' prefers_single_record_link=False inverse_link_field_id='fldN7NwkxotTvpkj3' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Payments",
+      "id": "tblMBGMmc26P304WB",
+      "record_count": 74,
+      "record_count_display": "74",
+      "field_count": 34,
+      "fields": [
+        {
+          "name": "Payment ID",
+          "type": "formula",
+          "id": "fldOOvIG1wSkYjUD1",
+          "options": "formula='\"PAY-\" & YEAR({fldXAt3bKTRc43OPm}) & \"-\" & RIGHT(\"0000\" & {fld9i1ZUBsCTPqFn4}, 4)' is_valid=True referenced_field_ids=['fldXAt3bKTRc43OPm', 'fld9i1ZUBsCTPqFn4'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "ID",
+          "type": "formula",
+          "id": "fldQSstscKcNC3cRu",
+          "options": "formula='RECORD_ID()' is_valid=True referenced_field_ids=[] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Autonumber Field",
+          "type": "autoNumber",
+          "id": "fld9i1ZUBsCTPqFn4"
+        },
+        {
+          "name": "Created At",
+          "type": "createdTime",
+          "id": "fldXAt3bKTRc43OPm"
+        },
+        {
+          "name": "Payment Type",
+          "type": "singleSelect",
+          "id": "fldcdGFTbqKMIjo6F",
+          "options": "choices=[Choice(id='selGw4uRoGE9rnagF', name='Base Package Invoice', color='blueLight2'), Choice(id='sel3qS0U15coe1Eq3', name='Additional Fees Invoice', color='cyanLight2')]"
+        },
+        {
+          "name": "Tutoring Package",
+          "type": "multipleRecordLinks",
+          "id": "fldmlY7grdcFQj3Op",
+          "options": "is_reversed=False linked_table_id='tbltI2NKTDqgXZZR9' prefers_single_record_link=True inverse_link_field_id='fldUKiSZcpMesSTMA' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Student",
+          "type": "multipleRecordLinks",
+          "id": "fldyF9sJ7WhOwBd0M",
+          "options": "is_reversed=False linked_table_id='tblRBe3k3Mm5C3sHY' prefers_single_record_link=True inverse_link_field_id='fldoYR5zttvITpwFH' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Student Name",
+          "type": "multipleLookupValues",
+          "id": "fld4VdDDMYEMVuWmF",
+          "options": "field_id_in_linked_table='fldGGmW5hVDQCFr67' is_valid=True record_link_field_id='fldyF9sJ7WhOwBd0M' result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Student Email",
+          "type": "multipleLookupValues",
+          "id": "fldDhN9SBWXA6q2Ia",
+          "options": "field_id_in_linked_table='fldlbaklN4E4ArLqa' is_valid=True record_link_field_id='fldyF9sJ7WhOwBd0M' result=EmailFieldConfig(type='email')"
+        },
+        {
+          "name": "Parent",
+          "type": "multipleRecordLinks",
+          "id": "fld4lvluCf52j2lWf",
+          "options": "is_reversed=False linked_table_id='tbl3WZiiqYZMQ4M4y' prefers_single_record_link=True inverse_link_field_id='fldNpoMkDtPevaQp4' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Parent Name",
+          "type": "multipleLookupValues",
+          "id": "fldnW6BCImvW5EWTh",
+          "options": "field_id_in_linked_table='fldKPocj2GnqWXq4N' is_valid=True record_link_field_id='fld4lvluCf52j2lWf' result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Parent Email",
+          "type": "multipleLookupValues",
+          "id": "fldACB4sdxZB62vtE",
+          "options": "field_id_in_linked_table='fldLMaXBh0bUb3h2r' is_valid=True record_link_field_id='fld4lvluCf52j2lWf' result=EmailFieldConfig(type='email')"
+        },
+        {
+          "name": "Total Base Package Price",
+          "type": "rollup",
+          "id": "fldWeW5HjzQppQjxr",
+          "options": "field_id_in_linked_table='fldl0dNbCtgkVgIHJ' is_valid=True record_link_field_id='fldmlY7grdcFQj3Op' referenced_field_ids=['fldcdGFTbqKMIjo6F'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Transportation Reimbursement",
+          "type": "rollup",
+          "id": "fldBVk4NQBgr2qanP",
+          "options": "field_id_in_linked_table='fld0gZMewFkIj6FI0' is_valid=True record_link_field_id='fldmlY7grdcFQj3Op' referenced_field_ids=['fldcdGFTbqKMIjo6F'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Late Cancellation Fees",
+          "type": "rollup",
+          "id": "fldix9uiBiBwtNwCQ",
+          "options": "field_id_in_linked_table='fld68eqXcRLGBqiL3' is_valid=True record_link_field_id='fldmlY7grdcFQj3Op' referenced_field_ids=['fldcdGFTbqKMIjo6F'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Over-Delivered Hours",
+          "type": "rollup",
+          "id": "fld2KuQboexyiNyig",
+          "options": "field_id_in_linked_table='fldCHL8SSSOqyue8J' is_valid=True record_link_field_id='fldmlY7grdcFQj3Op' referenced_field_ids=['fldcdGFTbqKMIjo6F'] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=0))"
+        },
+        {
+          "name": "Additional Fees Adjustment",
+          "type": "rollup",
+          "id": "fldBvfprUIBzx8qez",
+          "options": "field_id_in_linked_table='fldlR5gRJ8PnlHJk0' is_valid=True record_link_field_id='fldmlY7grdcFQj3Op' referenced_field_ids=['fldcdGFTbqKMIjo6F'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Additional Fees Invoice Note",
+          "type": "rollup",
+          "id": "fld3MIYbs0IZAahBa",
+          "options": "field_id_in_linked_table='fld6DUTP9igBd8mH5' is_valid=True record_link_field_id='fldmlY7grdcFQj3Op' referenced_field_ids=['fldcdGFTbqKMIjo6F'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Total Additional Fees Amount",
+          "type": "rollup",
+          "id": "fldPzNsIhogcha85V",
+          "options": "field_id_in_linked_table='fldiA8V2rgeqTwnQa' is_valid=True record_link_field_id='fldmlY7grdcFQj3Op' referenced_field_ids=['fldcdGFTbqKMIjo6F'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Total Payment Amount",
+          "type": "formula",
+          "id": "fldBbA0gwLeeJP8H1",
+          "options": "formula='IF({fldcdGFTbqKMIjo6F} = \"Base Package Invoice\", {fldWeW5HjzQppQjxr}, {fldPzNsIhogcha85V})' is_valid=True referenced_field_ids=['fldcdGFTbqKMIjo6F', 'fldWeW5HjzQppQjxr', 'fldPzNsIhogcha85V'] result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Due Date",
+          "type": "dateTime",
+          "id": "fldiz6VjId1Hzbxv6",
+          "options": "time_zone='client' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='h:mma', name='12hour')"
+        },
+        {
+          "name": "Xero Invoice ID",
+          "type": "singleLineText",
+          "id": "fldTmEFuPKriBXLY2"
+        },
+        {
+          "name": "Invoice Sent At",
+          "type": "formula",
+          "id": "fldBQMaD7Elpw3YyS",
+          "options": "formula='IF(\\n  {fldcdGFTbqKMIjo6F} = \"Base Package Invoice\",\\n  {fldgsMnTHvdvdqJRS},\\n  {fldDMv4ekNrK1BkX4}\\n)' is_valid=True referenced_field_ids=['fldcdGFTbqKMIjo6F', 'fldgsMnTHvdvdqJRS', 'fldDMv4ekNrK1BkX4'] result=DateFieldConfig(type='date', options=DateFieldOptions(date_format=DateFormat(format='M/D/YYYY', name='us')))"
+        },
+        {
+          "name": "Invoice Link",
+          "type": "url",
+          "id": "fldsO7IpMCef4CsBP"
+        },
+        {
+          "name": "Invoice PDF",
+          "type": "multipleAttachments",
+          "id": "fldvyybtxVVvGEkIg",
+          "options": "is_reversed=False"
+        },
+        {
+          "name": "Payment Status",
+          "type": "singleSelect",
+          "id": "fldlUKnW9RaIcf17l",
+          "options": "choices=[Choice(id='selvQF9hPuD1jO4DB', name='Unpaid', color='blueLight2'), Choice(id='selTvZmgFOg24w9rZ', name='Paid', color='cyanLight2'), Choice(id='selxex46yVjgIzwfS', name='Overdue', color='tealLight2')]"
+        },
+        {
+          "name": "Paid At",
+          "type": "dateTime",
+          "id": "fldWEEJAp8oNcxkDc",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Payment Method",
+          "type": "singleSelect",
+          "id": "fldX4jIc6iBXmH7tf",
+          "options": "choices=[Choice(id='seliPUspM2shlJp1R', name='Bank Transfer', color='blueLight2'), Choice(id='selPPVl90k19ZxFAx', name='FPS', color='cyanLight2'), Choice(id='selBcjrey9eirjxfm', name='PayMe', color='tealLight2'), Choice(id='selF2abYEJBeGzmvN', name='Credit/Debit Card', color='greenLight2')]"
+        },
+        {
+          "name": "Payment Reference",
+          "type": "singleLineText",
+          "id": "fldMNxIMn0SP21kLW"
+        },
+        {
+          "name": "Notes",
+          "type": "richText",
+          "id": "fld7W1TFPb5ZEk5jk"
+        },
+        {
+          "name": "Payment Confirmation Email Sent At",
+          "type": "dateTime",
+          "id": "fld6Y6iHtvqMx1xzx",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Admin Notifications",
+          "type": "multipleRecordLinks",
+          "id": "fldczN6dtgYZSuFa1",
+          "options": "is_reversed=False linked_table_id='tbl4poo8mQLHNdHBA' prefers_single_record_link=False inverse_link_field_id='fld1TZ4pNbNu11cA0' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Client Package Confirmation Email Sent At",
+          "type": "multipleLookupValues",
+          "id": "fldgsMnTHvdvdqJRS",
+          "options": "field_id_in_linked_table='fldjcgshwcA8eLBol' is_valid=True record_link_field_id='fldmlY7grdcFQj3Op' result=DateTimeFieldConfig(type='dateTime', options=DateTimeFieldOptions(time_zone='Asia/Hong_Kong', date_format=DateFormat(format='LL', name='friendly'), time_format=TimeFormat(format='HH:mm', name='24hour')))"
+        },
+        {
+          "name": "Client Package Completion Email Sent At",
+          "type": "multipleLookupValues",
+          "id": "fldDMv4ekNrK1BkX4",
+          "options": "field_id_in_linked_table='fldox5Rp82SoM1uzo' is_valid=True record_link_field_id='fldmlY7grdcFQj3Op' result=DateTimeFieldConfig(type='dateTime', options=DateTimeFieldOptions(time_zone='Asia/Hong_Kong', date_format=DateFormat(format='LL', name='friendly'), time_format=TimeFormat(format='HH:mm', name='24hour')))"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Payouts",
+      "id": "tblq6dRgtcxIR2Ang",
+      "record_count": 62,
+      "record_count_display": "62",
+      "field_count": 24,
+      "fields": [
+        {
+          "name": "Payout ID",
+          "type": "formula",
+          "id": "fldYuCBgdPHXP6soU",
+          "options": "formula='\"PYO-\" & YEAR({fld4LVFyFvFvGnYXd}) & \"-\" & RIGHT(\"0000\" & {fldA9ANNQH3VCXf5j}, 4)' is_valid=True referenced_field_ids=['fld4LVFyFvFvGnYXd', 'fldA9ANNQH3VCXf5j'] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "ID",
+          "type": "formula",
+          "id": "fldpsuPIFjYX19rZs",
+          "options": "formula='RECORD_ID()' is_valid=True referenced_field_ids=[] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Autonumber Field",
+          "type": "autoNumber",
+          "id": "fldA9ANNQH3VCXf5j"
+        },
+        {
+          "name": "Created At",
+          "type": "createdTime",
+          "id": "fld4LVFyFvFvGnYXd"
+        },
+        {
+          "name": "Tutoring Package",
+          "type": "multipleRecordLinks",
+          "id": "fldN5BFPWW1ggDmUP",
+          "options": "is_reversed=False linked_table_id='tbltI2NKTDqgXZZR9' prefers_single_record_link=True inverse_link_field_id='flde7Kju3kIYVLAFc' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutor",
+          "type": "multipleRecordLinks",
+          "id": "fldVrRKD8SX9DIDao",
+          "options": "is_reversed=False linked_table_id='tblv7MknTwat2Ddo5' prefers_single_record_link=True inverse_link_field_id='fldzxSaUIK4QCrlIb' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutor Name",
+          "type": "multipleLookupValues",
+          "id": "fldFTzMmbfpN48N7V",
+          "options": "field_id_in_linked_table='flddRrcJTumv4GAXm' is_valid=True record_link_field_id='fldVrRKD8SX9DIDao' result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Tutor Email",
+          "type": "multipleLookupValues",
+          "id": "fldNqkPoA8v5D9LBK",
+          "options": "field_id_in_linked_table='fldjneW68uVQ2ff8M' is_valid=True record_link_field_id='fldVrRKD8SX9DIDao' result=EmailFieldConfig(type='email')"
+        },
+        {
+          "name": "Tutoring Earnings",
+          "type": "multipleLookupValues",
+          "id": "fldFlxWa0F3y5jo54",
+          "options": "field_id_in_linked_table='fldNdtYWF5aLi8o9F' is_valid=True record_link_field_id='fldN5BFPWW1ggDmUP' result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Transportation Reimbursement",
+          "type": "multipleLookupValues",
+          "id": "fldItKp21SIeZvcKc",
+          "options": "field_id_in_linked_table='fld0gZMewFkIj6FI0' is_valid=True record_link_field_id='fldN5BFPWW1ggDmUP' result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Late Cancellation Fees",
+          "type": "multipleLookupValues",
+          "id": "fldLDryuBRSK5dTZ2",
+          "options": "field_id_in_linked_table='fld68eqXcRLGBqiL3' is_valid=True record_link_field_id='fldN5BFPWW1ggDmUP' result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Payout Adjustment",
+          "type": "multipleLookupValues",
+          "id": "fldsEDEnYBuBdNhvi",
+          "options": "field_id_in_linked_table='fldoyBgZ0i2qvSJrm' is_valid=True record_link_field_id='fldN5BFPWW1ggDmUP' result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Payout Adjustment Note",
+          "type": "multipleLookupValues",
+          "id": "fldrLdWUuXSBGpaYV",
+          "options": "field_id_in_linked_table='fldpOBVBSNX0g82RZ' is_valid=True record_link_field_id='fldN5BFPWW1ggDmUP' result=MultilineTextFieldConfig(type='multilineText')"
+        },
+        {
+          "name": "Total Payout Amount",
+          "type": "multipleLookupValues",
+          "id": "fld1UPohdGbWES5xw",
+          "options": "field_id_in_linked_table='fldN18e784vpGjYVY' is_valid=True record_link_field_id='fldN5BFPWW1ggDmUP' result=CurrencyFieldConfig(type='currency', options=CurrencyFieldOptions(precision=2, symbol='HKD'))"
+        },
+        {
+          "name": "Xero Bill ID",
+          "type": "singleLineText",
+          "id": "fldYx6pJvKzbyd2Eh"
+        },
+        {
+          "name": "Bill PDF",
+          "type": "multipleAttachments",
+          "id": "fldlugY7XLs8y6N2B",
+          "options": "is_reversed=False"
+        },
+        {
+          "name": "Bill Sent At",
+          "type": "multipleLookupValues",
+          "id": "fldibu33cUs2FedTe",
+          "options": "field_id_in_linked_table='fldIx0QGlc7UrLPSV' is_valid=True record_link_field_id='fldN5BFPWW1ggDmUP' result=DateTimeFieldConfig(type='dateTime', options=DateTimeFieldOptions(time_zone='Asia/Hong_Kong', date_format=DateFormat(format='LL', name='friendly'), time_format=TimeFormat(format='HH:mm', name='24hour')))"
+        },
+        {
+          "name": "Xero Purchase Order ID",
+          "type": "singleLineText",
+          "id": "fldnezhUhZ4A0a3iA"
+        },
+        {
+          "name": "Self-Billed Invoice Email Sent At",
+          "type": "multipleLookupValues",
+          "id": "fldklyioP9Ex78FdZ",
+          "options": "field_id_in_linked_table='fldPIWV7avg3nVgPb' is_valid=True record_link_field_id='fldN5BFPWW1ggDmUP' result=DateTimeFieldConfig(type='dateTime', options=DateTimeFieldOptions(time_zone='Asia/Hong_Kong', date_format=DateFormat(format='LL', name='friendly'), time_format=TimeFormat(format='HH:mm', name='24hour')))"
+        },
+        {
+          "name": "Self-Billed Invoice PDF",
+          "type": "multipleAttachments",
+          "id": "fldBbztP0vzQIcnIB",
+          "options": "is_reversed=False"
+        },
+        {
+          "name": "Self-Billed Invoice Signed At",
+          "type": "dateTime",
+          "id": "fldChU3Ff9cg7uiPa",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Payout Status",
+          "type": "singleSelect",
+          "id": "fldulCMpi374kFx5D",
+          "options": "choices=[Choice(id='selfdD3Js7KbfOVvn', name='Accruing', color='blueBright'), Choice(id='selm09OdRz4whRwJ0', name='Pending Signature', color='yellowBright'), Choice(id='selcvxEi5spdcLKyv', name='Approved', color='orangeBright'), Choice(id='sel31CxJrTrsltOxh', name='Payment Sent', color='greenLight2'), Choice(id='seluHpKogHdu2uJFX', name='Paid', color='greenBright')]"
+        },
+        {
+          "name": "Payout Confirmation Email Sent At",
+          "type": "dateTime",
+          "id": "fld19RiZMQWtGZRvV",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Admin Notifications",
+          "type": "multipleRecordLinks",
+          "id": "fld0YtSf3Gcm3Mr8l",
+          "options": "is_reversed=False linked_table_id='tbl4poo8mQLHNdHBA' prefers_single_record_link=False inverse_link_field_id='fldtpjJryTgGWAlS3' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Tutor Applications",
+      "id": "tbl1SJ2FXErQ3SPYr",
+      "record_count": 1,
+      "record_count_display": "1",
+      "field_count": 46,
+      "fields": [
+        {
+          "name": "Application ID",
+          "type": "autoNumber",
+          "id": "fldeLKMsWpzzBTSf5"
+        },
+        {
+          "name": "Applied Date",
+          "type": "createdTime",
+          "id": "fldEJVXkwOsmLYV5p"
+        },
+        {
+          "name": "First Name",
+          "type": "singleLineText",
+          "id": "fldhrzMvv5BYyYEYw"
+        },
+        {
+          "name": "Last Name",
+          "type": "singleLineText",
+          "id": "fld3ad7tMr122Kurl"
+        },
+        {
+          "name": "Email",
+          "type": "email",
+          "id": "fldFxFkHNyuGHdmEu"
+        },
+        {
+          "name": "Phone",
+          "type": "phoneNumber",
+          "id": "fldHjdXwTC1nj747e"
+        },
+        {
+          "name": "Education Level",
+          "type": "singleSelect",
+          "id": "fldK2XVDOK5ANw3PS",
+          "options": "choices=[Choice(id='selI32250fSrnLnrL', name='Secondary', color='greenLight2'), Choice(id='selS87702fwdmvA3R', name='Undergraduate', color='blueLight2'), Choice(id='sel4B9WQgGE7xi8hv', name=\"Master's\", color='cyanLight2'), Choice(id='seluevSX7yw0mTjgJ', name='PhD', color='tealLight2')]"
+        },
+        {
+          "name": "Grade/Year",
+          "type": "singleSelect",
+          "id": "fldt5WslC4wuJ1iGe",
+          "options": "choices=[Choice(id='selfusq1H7zM0Ee1u', name='Year 1 (University)', color='blueLight2'), Choice(id='sel0WQXRDUoSzucEU', name='Year 2 (University)', color='cyanLight2'), Choice(id='selFzwTZ7z96m8PTA', name='Year 3 (University)', color='tealLight2'), Choice(id='selGHxCmIUqZwgnmR', name='Year 4 (University)', color='greenLight2'), Choice(id='sel7LoqjkuCrppnt3', name='Grade 9', color='yellowLight2'), Choice(id='seljUWHtTPfS7Gq3k', name='Grade 10', color='orangeLight2'), Choice(id='seloWsvaJEj0xhuXq', name='Grade 11', color='redLight2'), Choice(id='selxJQaSj8BW9xsgz', name='Grade 12', color='pinkLight2'), Choice(id='selAK578oMzq2YDmH', name='Year 10', color='purpleLight2'), Choice(id='selxRb0g8jqr2yh9A', name='Year 11', color='grayLight2'), Choice(id='sel60gakmUGfkb6B1', name='Year 12', color='blueLight1'), Choice(id='selTTySvHuOgyQcmk', name='Year 13', color='cyanLight1'), Choice(id='selUM64uVV7qWK2AW', name='Form 4 (F4)', color='tealLight1'), Choice(id='selYQo3VDFcoguUsn', name='Form 5 (F5)', color='greenLight1'), Choice(id='selEg63IpY58z8uMY', name='Form 6 (F6)', color='yellowLight1'), Choice(id='selMV0W1lwcjE1qtd', name=\"Master's Student\", color='orangeLight1'), Choice(id='sel4JOQTjdBtJjwJ0', name='Postgraduate Diploma Student', color='redLight1'), Choice(id='selHJJuRSbXPUp0D6', name='PhD Student', color='pinkLight1'), Choice(id='selBk8VZMEhVyI0hl', name='Graduate/Working Professional', color='purpleLight1'), Choice(id='selxt7HhoGJSeWTwb', name='Gap Year', color='grayLight1')]"
+        },
+        {
+          "name": "Secondary School",
+          "type": "multipleRecordLinks",
+          "id": "fld2hMOiA8EmsIeHt",
+          "options": "is_reversed=False linked_table_id='tblSOc61sKiB8oFpI' prefers_single_record_link=False inverse_link_field_id='fldq5xZo55hyTDCtm' view_id_for_record_selection='viwM7E5PVE19G9GQZ'"
+        },
+        {
+          "name": "University",
+          "type": "multipleRecordLinks",
+          "id": "fldAvKPvdPHfFEt0K",
+          "options": "is_reversed=False linked_table_id='tblSOc61sKiB8oFpI' prefers_single_record_link=False inverse_link_field_id='fldxPtZnxVGqfCnvo' view_id_for_record_selection='viwEoH0GuPE3wLtMs'"
+        },
+        {
+          "name": "Major",
+          "type": "singleLineText",
+          "id": "fldDjRDrNmaSWh8CD"
+        },
+        {
+          "name": "Academic Transcripts",
+          "type": "multipleAttachments",
+          "id": "fldSRVLMH3b7wuQxB",
+          "options": "is_reversed=False"
+        },
+        {
+          "name": "Subjects Applied",
+          "type": "multipleRecordLinks",
+          "id": "fldkl7lW3tP46CnTQ",
+          "options": "is_reversed=False linked_table_id='tblFxN9BdHM8iLXd1' prefers_single_record_link=False inverse_link_field_id='fldqGSiijC8853k8s' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Relevant Qualifications",
+          "type": "richText",
+          "id": "fldyn5TFDiyJmAjGh"
+        },
+        {
+          "name": "Teaching Experience Duration",
+          "type": "singleLineText",
+          "id": "fldoHAtrxzQ8r8waK"
+        },
+        {
+          "name": "Teaching Experience Summary",
+          "type": "richText",
+          "id": "fldYFqaXh3WmN2Fzr"
+        },
+        {
+          "name": "Resume",
+          "type": "multipleAttachments",
+          "id": "fld4uAc2BLoyD6zNI",
+          "options": "is_reversed=False"
+        },
+        {
+          "name": "Weekly Hours Available",
+          "type": "number",
+          "id": "fldktgDuwl2KhYJ9E",
+          "options": "precision=0"
+        },
+        {
+          "name": "Weekly Days Available",
+          "type": "multipleSelects",
+          "id": "fldEs9Brz7akIPsdi",
+          "options": "choices=[Choice(id='seluEOfeg4P4yPCe6', name='Monday', color='blueLight2'), Choice(id='selwKAj6mBYJrv7CD', name='Tuesday', color='cyanLight2'), Choice(id='selobAiCgturZQz1h', name='Wednesday', color='tealLight2'), Choice(id='selSXSMkY7sOTYoKd', name='Thursday', color='greenLight2'), Choice(id='selEcqcRTAaj4G4xv', name='Friday', color='yellowLight2'), Choice(id='sel9tScQ3knpEvc1j', name='Saturday', color='orangeLight2'), Choice(id='selJob1tkQZIHgUQk', name='Sunday', color='redLight2')]"
+        },
+        {
+          "name": "Available Modes",
+          "type": "multipleSelects",
+          "id": "fldqJ0ZXHW2CSawEG",
+          "options": "choices=[Choice(id='selnyiC0iCVyNfs29', name='Online', color='blueLight2'), Choice(id='sels3GvkGhBEzfpeK', name='In-person', color='cyanLight2')]"
+        },
+        {
+          "name": "Commitment Summary",
+          "type": "richText",
+          "id": "fldrNKQLVFts72fjN"
+        },
+        {
+          "name": "Video Submission Link",
+          "type": "url",
+          "id": "fldwBCOSONzDxnEY1"
+        },
+        {
+          "name": "Source",
+          "type": "multipleSelects",
+          "id": "fldClN5CiXfmKCv1i",
+          "options": "choices=[Choice(id='selTfvKcRRRwluuie', name='Instagram', color='cyanLight2'), Choice(id='selVRiKQonFi2idES', name='Facebook', color='blueLight2'), Choice(id='sel2bUTscqI7MIAdY', name='Linkedin', color='tealLight2'), Choice(id='selylil3FSTgYK8mE', name='Online search', color='greenLight2'), Choice(id='sel2eQ6kOjOjAdGfw', name='Referred by someone', color='yellowLight2'), Choice(id='selyK7iedxX9gTbgk', name='Referred by an organization', color='orangeLight2'), Choice(id='sel54GSMJJtoUw6EW', name='Other', color='redLight2')]"
+        },
+        {
+          "name": "Specific Source",
+          "type": "singleLineText",
+          "id": "fldVbIwu9NvI3vUo8"
+        },
+        {
+          "name": "Initial Screening Status",
+          "type": "singleSelect",
+          "id": "flde7jR0Pp6RBLxNd",
+          "options": "choices=[Choice(id='selBxauC67XrDyGop', name='Pending Decision', color='blueLight2'), Choice(id='selRRSim2N7XY7GpY', name='Pass', color='cyanLight2'), Choice(id='selF9WdNY5wOgHTCw', name='Fail', color='tealLight2'), Choice(id='selv4YmAXZND9soln', name='To-be-scheduled', color='greenLight2')]"
+        },
+        {
+          "name": "Initial Screening Pass Email Sent At",
+          "type": "dateTime",
+          "id": "fldMbXHaNn3tGgvnC",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Mock Trial Lesson",
+          "type": "multipleRecordLinks",
+          "id": "fldWnzBcLsEZ5i2qp",
+          "options": "is_reversed=False linked_table_id='tblmJcPFIkf4pyV5r' prefers_single_record_link=False inverse_link_field_id='fldNAzARSodf9RAZA' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Interview Status",
+          "type": "singleSelect",
+          "id": "fldtOPufbDvime7X8",
+          "options": "choices=[Choice(id='selIlIpis5DlPEacW', name='Not Scheduled', color='blueLight2'), Choice(id='selTsEti3Gdt9Aefl', name='Scheduled', color='cyanLight2'), Choice(id='sel0eaLxJjWEcFuAr', name='Pending Decision', color='tealLight2'), Choice(id='selCFe1DMWfvOGhKW', name='Pass', color='greenLight2'), Choice(id='sel44oPwlOUO9cNt5', name='Fail', color='yellowLight2')]"
+        },
+        {
+          "name": "Interview Date",
+          "type": "date",
+          "id": "fld9AQNc5lRnwE7mH",
+          "options": "date_format=DateFormat(format='LL', name='friendly')"
+        },
+        {
+          "name": "Interview Pass Email Sent At",
+          "type": "dateTime",
+          "id": "fldT8ef0CRYyJTjZs",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Mock Trial Status",
+          "type": "singleSelect",
+          "id": "fldDBHdoN8GhOU765",
+          "options": "choices=[Choice(id='selwU0iTgInXlbvSU', name='Not Scheduled', color='blueLight2'), Choice(id='sel8qU2y0Uk98KfHH', name='Scheduled', color='cyanLight2'), Choice(id='selPfBgcmzbpt67W7', name='Awaiting Lesson Report', color='tealLight2'), Choice(id='selJYfz8TQlbo2i78', name='Pending Decision', color='greenLight2'), Choice(id='selIZbNp0c1RDDZDM', name='Pass', color='yellowLight2'), Choice(id='sel2z8beWCifQV7j8', name='Fail', color='orangeLight2')]"
+        },
+        {
+          "name": "Mock Trial Date",
+          "type": "date",
+          "id": "fldxWrsu8tb5jY2Rc",
+          "options": "date_format=DateFormat(format='LL', name='friendly')"
+        },
+        {
+          "name": "Teaching Ability Score",
+          "type": "number",
+          "id": "fldjjPqnzlwFX5gyk",
+          "options": "precision=0"
+        },
+        {
+          "name": "Communication & Client Service Score",
+          "type": "number",
+          "id": "fldFA2JpaL4NlKSR7",
+          "options": "precision=0"
+        },
+        {
+          "name": "Process Adherence Score",
+          "type": "number",
+          "id": "fldxCmDW9tEGhZTZk",
+          "options": "precision=0"
+        },
+        {
+          "name": "Overall Score",
+          "type": "formula",
+          "id": "fldJn37d86sWVx9Uo",
+          "options": "formula='IF(\\n  AND(\\n    {fldjjPqnzlwFX5gyk},\\n    {fldFA2JpaL4NlKSR7},\\n    {fldxCmDW9tEGhZTZk}\\n  ),\\n  ROUND((\\n    {fldjjPqnzlwFX5gyk} + \\n    {fldFA2JpaL4NlKSR7} + \\n    {fldxCmDW9tEGhZTZk}\\n  ) / 3, 0),\\n  BLANK()\\n)' is_valid=True referenced_field_ids=['fldjjPqnzlwFX5gyk', 'fldFA2JpaL4NlKSR7', 'fldxCmDW9tEGhZTZk'] result=NumberFieldConfig(type='number', options=NumberFieldOptions(precision=0))"
+        },
+        {
+          "name": "Mock Trial Pass Email Sent At",
+          "type": "date",
+          "id": "fldbJGYBWIcotDkxD",
+          "options": "date_format=DateFormat(format='LL', name='friendly')"
+        },
+        {
+          "name": "Account Creation Email Sent At",
+          "type": "dateTime",
+          "id": "fldhOjjS9x8UGpLJ4",
+          "options": "time_zone='utc' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Link to Mock Trial Lesson",
+          "type": "multipleRecordLinks",
+          "id": "fldzlxF6CVr4yHo8A",
+          "options": "is_reversed=False linked_table_id='tblmJcPFIkf4pyV5r' prefers_single_record_link=True inverse_link_field_id='fldyJbIO8fIlV4mIz' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Onboarding Status",
+          "type": "singleSelect",
+          "id": "fldk6Z3CNfhlmsKa0",
+          "options": "choices=[Choice(id='sel0t6mjondTkCdzk', name='Not Scheduled', color='blueLight2'), Choice(id='selHyvCD71jWgy2uc', name='Scheduled', color='cyanLight2'), Choice(id='selPWQHzZbhdGD2Sr', name='Completed', color='tealLight2')]"
+        },
+        {
+          "name": "Onboarding Date",
+          "type": "date",
+          "id": "fldsVYiV3cxkM0Sxr",
+          "options": "date_format=DateFormat(format='LL', name='friendly')"
+        },
+        {
+          "name": "Onboarding Completion Email Sent At",
+          "type": "dateTime",
+          "id": "fldVbtgt7Qg3X0QAl",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Overall Application Status",
+          "type": "singleSelect",
+          "id": "fldiYKbRijPYB96uY",
+          "options": "choices=[Choice(id='sel3foD75VbI7cldJ', name='Screening', color='blueLight2'), Choice(id='selDFHQHFz9PgKFj8', name='Interview', color='cyanLight2'), Choice(id='selBlE3FJbVOGhHFF', name='Mock Trial', color='tealLight2'), Choice(id='selx05bYoEdP3gOk5', name='Onboarding', color='greenLight2'), Choice(id='selcyKZAWoLsanI46', name='Completed', color='yellowLight2'), Choice(id='selBw56BSOiv67suP', name='Rejected', color='orangeLight2'), Choice(id='selMcwP2yH1FSdIPN', name='New', color='redLight2')]"
+        },
+        {
+          "name": "Rejection Email Sent At",
+          "type": "dateTime",
+          "id": "fldOhno3EUHhGniNa",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "id": "fld62ne0V7Z7Xvaj2"
+        },
+        {
+          "name": "Tutor Record",
+          "type": "multipleRecordLinks",
+          "id": "fldNnVGmbRnWaZt0h",
+          "options": "is_reversed=False linked_table_id='tblv7MknTwat2Ddo5' prefers_single_record_link=True inverse_link_field_id='fld9MwTpp4nHGls9N' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Leads",
+      "id": "tblwxWsoR0AKjAN3M",
+      "record_count": 6,
+      "record_count_display": "6",
+      "field_count": 33,
+      "fields": [
+        {
+          "name": "Lead ID",
+          "type": "autoNumber",
+          "id": "fld3zex8bBr7YyMTh"
+        },
+        {
+          "name": "Lead Type",
+          "type": "singleSelect",
+          "id": "flddL9tdE3iAPHPnP",
+          "options": "choices=[Choice(id='selRweDHCtjAuyB9V', name='Parent', color='blueLight2'), Choice(id='selzwhUBLlpf1fQw1', name='Student', color='cyanLight2')]"
+        },
+        {
+          "name": "Created At",
+          "type": "createdTime",
+          "id": "fld9ZC7iYviiMULzV"
+        },
+        {
+          "name": "Created From",
+          "type": "singleSelect",
+          "id": "fldhGpx86L3C9G3Pz",
+          "options": "choices=[Choice(id='selQqiJQjuuEYi80a', name='Lead form submission', color='blueLight2'), Choice(id='selSgD6fxrrP4BAR3', name='Manual input', color='cyanLight2')]"
+        },
+        {
+          "name": "Source",
+          "type": "singleSelect",
+          "id": "fldYoDLvB26b2Bs7n",
+          "options": "choices=[Choice(id='sel73VCjnxGzZbHHd', name='Instagram', color='blueLight2'), Choice(id='selF3jg5IxjuFi99G', name='Facebook', color='cyanLight2'), Choice(id='selroUhV6i84RC8TG', name='Linkedin', color='tealLight2'), Choice(id='sel41oTrHOyYvKGXv', name='Online search', color='greenLight2'), Choice(id='selmtDc5af8ejevJC', name='Referred by someone', color='yellowLight2'), Choice(id='selF6ExMHsj3Sqy5H', name='Referred by an organization', color='orangeLight2'), Choice(id='sel27QalkBIYydNE1', name='Other', color='redLight2')]"
+        },
+        {
+          "name": "Specific Source",
+          "type": "singleLineText",
+          "id": "fld0XoRCGBcbpuE59"
+        },
+        {
+          "name": "Parent First Name",
+          "type": "singleLineText",
+          "id": "fldStJXPHHp8zSIBb"
+        },
+        {
+          "name": "Parent Last Name",
+          "type": "singleLineText",
+          "id": "fldDsQDkLiO35A6rF"
+        },
+        {
+          "name": "Parent Email",
+          "type": "email",
+          "id": "fldaETW89Y9f4NlcF"
+        },
+        {
+          "name": "Parent Phone",
+          "type": "phoneNumber",
+          "id": "fldMXBc6dU6682l4j"
+        },
+        {
+          "name": "Student First Name",
+          "type": "singleLineText",
+          "id": "fldinW17NHKnfWfim"
+        },
+        {
+          "name": "Student Last Name",
+          "type": "singleLineText",
+          "id": "fldjAKEh0LPVA0JCJ"
+        },
+        {
+          "name": "Student Email",
+          "type": "email",
+          "id": "fldGYHxywsXHG7hcS"
+        },
+        {
+          "name": "Student Phone",
+          "type": "phoneNumber",
+          "id": "fld5sn0nEWxF1Iiat"
+        },
+        {
+          "name": "Grade/Year",
+          "type": "singleSelect",
+          "id": "fldMbDWX7MIuHsrht",
+          "options": "choices=[Choice(id='selhh7XOxQj4MWzWp', name='Reception (R)', color='blueLight2'), Choice(id='selL7u1njjQVyBlvz', name='Reception 1 (R1)', color='cyanLight2'), Choice(id='selZcqag2L0ixe78W', name='Reception 2 (R2)', color='tealLight2'), Choice(id='selTff2lkhusdNet2', name='Kindergarten (K)', color='greenLight2'), Choice(id='seldXQBxTLuzpjkOY', name='Primary 1 (P1)', color='yellowLight2'), Choice(id='selawlkRxbrXkllGd', name='Primary 2 (P2)', color='orangeLight2'), Choice(id='seliOa3OBjfhdro59', name='Primary 3 (P3)', color='redLight2'), Choice(id='selXrBquuPaAzqVKQ', name='Primary 4 (P4)', color='pinkLight2'), Choice(id='selT1dU5uMoI7ejPY', name='Primary 5 (P5)', color='purpleLight2'), Choice(id='sel9G7BaFD37Cz4IK', name='Primary 6 (P6)', color='grayLight2'), Choice(id='sel3P8FoIPc31fWn7', name='Form 1 (F1)', color='blueLight1'), Choice(id='selT1QDaLt0PL9o4K', name='Form 2 (F2)', color='cyanLight1'), Choice(id='selvQm8z3ZeE30y1H', name='Form 3 (F3)', color='tealLight1'), Choice(id='selSEphWivAB8cHsH', name='Form 4 (F4)', color='greenLight1'), Choice(id='sel1ha1ITYdK5JY6T', name='Form 5 (F5)', color='yellowLight1')]"
+        },
+        {
+          "name": "School",
+          "type": "singleLineText",
+          "id": "fldSfXqyVpUUz2H3L"
+        },
+        {
+          "name": "School (Mapped)",
+          "type": "multipleRecordLinks",
+          "id": "fld8htCthIg5lMq9D",
+          "options": "is_reversed=False linked_table_id='tblSOc61sKiB8oFpI' prefers_single_record_link=False inverse_link_field_id='fldogETZO5WEpBmUo' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Subjects Wanted",
+          "type": "singleLineText",
+          "id": "fldULRCzfnux97eWu"
+        },
+        {
+          "name": "Subjects Wanted (Mapped)",
+          "type": "multipleRecordLinks",
+          "id": "fld4V0WV9sytPqN6K",
+          "options": "is_reversed=False linked_table_id='tblFxN9BdHM8iLXd1' prefers_single_record_link=False inverse_link_field_id='fldXwDEN8MXqpq4VR' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Learning Preferences",
+          "type": "richText",
+          "id": "fldPuf1QUAeq6mkjm"
+        },
+        {
+          "name": "Academic Goals",
+          "type": "richText",
+          "id": "flds7vE49oOQ5VCVu"
+        },
+        {
+          "name": "Special Accommodations",
+          "type": "richText",
+          "id": "fldql0mANtYnAeBm3"
+        },
+        {
+          "name": "Preferred Days and Times",
+          "type": "singleLineText",
+          "id": "fldOGR4Zw2ik3gZaM"
+        },
+        {
+          "name": "Preferred Frequency",
+          "type": "singleLineText",
+          "id": "fldRltg39D4EN09yp"
+        },
+        {
+          "name": "Preferred Modes",
+          "type": "multipleSelects",
+          "id": "fldnEwuIgyDh1jKry",
+          "options": "choices=[Choice(id='sel8RHEd5Sl6LezQt', name='Online', color='blueLight2'), Choice(id='selLTKvof0EDgJHo0', name='In-person', color='cyanLight2')]"
+        },
+        {
+          "name": "Location",
+          "type": "singleSelect",
+          "id": "fldQdfLEMgjjL3GvS",
+          "options": "choices=[Choice(id='selU4cj6McbSv2KH2', name='Central & Western', color='blueLight2'), Choice(id='selTaT4qQBjqlYWYs', name='Eastern', color='cyanLight2'), Choice(id='selX7kgUYHFD7GR40', name='Southern', color='tealLight2'), Choice(id='selVSz1EhsU80qHAX', name='Wan Chai', color='greenLight2'), Choice(id='selQgWQ5aVySAtpgw', name='Kowloon City', color='yellowLight2'), Choice(id='selScprVWt9sMaS0K', name='Kwun Tong', color='orangeLight2'), Choice(id='selwlRBHJlPwEyxCe', name='Sham Shui Po', color='redLight2'), Choice(id='sel01U8JJWaqQoU9M', name='Wong Tai Sin', color='pinkLight2'), Choice(id='selDofohyN7xNdE84', name='Yau Tsim Mong', color='purpleLight2'), Choice(id='selcp4RUp7k5BnfXg', name='Islands', color='grayLight2'), Choice(id='selycK7pqvldDVdbI', name='Kwai Tsing', color='blueLight1'), Choice(id='selq1U5e4jFRAW3EY', name='North', color='cyanLight1'), Choice(id='selOxKSfOdHjL4eEn', name='Sai Kung', color='tealLight1'), Choice(id='seljVYQB0ReWfuD57', name='Sha Tin', color='greenLight1'), Choice(id='selFKQg9oCib4wA6O', name='Tai Po', color='yellowLight1'), Choice(id='selOPxN2OhkmRqdf5', name='Tsuen Wan', color='orangeLight1'), Choice(id='selT4epkMykMtBpyp', name='Tuen Mun', color='redLight1'), Choice(id='selrixWzDC12mYdGx', name='Yuen Long', color='pinkLight1'), Choice(id='sell08fzKfMxiyk4N', name='Online Only', color='purpleLight1'), Choice(id='selJAlkym7hodBFsO', name='Other', color='grayLight1')]"
+        },
+        {
+          "name": "Other Location",
+          "type": "singleLineText",
+          "id": "fldksdBkyH0Wbt0Dq"
+        },
+        {
+          "name": "Lead Status",
+          "type": "singleSelect",
+          "id": "fldkXMjwQop3AkD5o",
+          "options": "choices=[Choice(id='sel4d4VZ7QPF18qL3', name='New', color='blueLight2'), Choice(id='selDzKGik3rrXWGax', name='Contacted', color='cyanLight2'), Choice(id='selW0CFlia0IrwpyN', name='Converted', color='tealLight2'), Choice(id='sel8jbHvmcXIyydaN', name='Lost', color='greenLight2')]"
+        },
+        {
+          "name": "Additional Message",
+          "type": "multilineText",
+          "id": "fldt6vGoh505GOFrS"
+        },
+        {
+          "name": "Notes",
+          "type": "multilineText",
+          "id": "fld4o0uYEzn9szfdm"
+        },
+        {
+          "name": "Converted At",
+          "type": "date",
+          "id": "fldhHf2feJJDPhN9E",
+          "options": "date_format=DateFormat(format='l', name='local')"
+        },
+        {
+          "name": "Link to Parents",
+          "type": "multipleRecordLinks",
+          "id": "fld2P0tZzaGxUoylZ",
+          "options": "is_reversed=False linked_table_id='tbl3WZiiqYZMQ4M4y' prefers_single_record_link=True inverse_link_field_id='fld8sQydxLAy9t6Tl' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Link to Students",
+          "type": "multipleRecordLinks",
+          "id": "fldMFbdPjOj57CSIC",
+          "options": "is_reversed=False linked_table_id='tblRBe3k3Mm5C3sHY' prefers_single_record_link=True inverse_link_field_id='fldzadqOnacWK5tXU' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Admin Notifications",
+      "id": "tbl4poo8mQLHNdHBA",
+      "record_count": 1,
+      "record_count_display": "1",
+      "field_count": 17,
+      "fields": [
+        {
+          "name": "ID",
+          "type": "formula",
+          "id": "fldjAviGn7NqWdBUn",
+          "options": "formula='RECORD_ID()' is_valid=True referenced_field_ids=[] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Assigned To",
+          "type": "multipleCollaborators",
+          "id": "fldZfMxtZTy6jCllv"
+        },
+        {
+          "name": "Priority",
+          "type": "singleSelect",
+          "id": "fldlrnUJvIi8Ajp3y",
+          "options": "choices=[Choice(id='selv3XuFckxEHfr18', name='Regular', color='yellowBright'), Choice(id='sel5t268WJ7UGBxUo', name='Urgent', color='orangeBright')]"
+        },
+        {
+          "name": "Notification Category",
+          "type": "singleSelect",
+          "id": "fldYZyKvuT7VnK6Xs",
+          "options": "choices=[Choice(id='sel6E1tSNL2FAgwCe', name='Leads', color='greenLight1'), Choice(id='selvi5OLRrKDfKkVc', name='Tutor Applications', color='cyanBright'), Choice(id='selY9C2NKMxEx7Pwr', name='Lesson Verification', color='tealLight1'), Choice(id='sel1qyTd17icEOTOn', name='Package Verification', color='tealLight1'), Choice(id='selo83MUtrsWIsAJz', name='Payout Needed', color='yellowBright'), Choice(id='selzWHqGFlDWsB32h', name='Late Submission', color='grayLight1'), Choice(id='selxvX34sSjcbtT2h', name='System Error', color='orangeBright')]"
+        },
+        {
+          "name": "Title",
+          "type": "singleLineText",
+          "id": "fldFG8hcme4WTSxCQ"
+        },
+        {
+          "name": "Details",
+          "type": "richText",
+          "id": "fldIKQ8Sk3sgahbXP"
+        },
+        {
+          "name": "Action Status",
+          "type": "singleSelect",
+          "id": "fldleBP3378HZ2oms",
+          "options": "choices=[Choice(id='sel4WVBKh2mFsYquh', name='Pending', color='yellowBright'), Choice(id='seldjP3NiUXA1AJyl', name='Completed', color='greenBright')]"
+        },
+        {
+          "name": "Tutoring Package",
+          "type": "multipleRecordLinks",
+          "id": "fldF5vC6kXuEiFFUj",
+          "options": "is_reversed=False linked_table_id='tbltI2NKTDqgXZZR9' prefers_single_record_link=False inverse_link_field_id='fldPmgvnMLHcymc5J' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Lesson",
+          "type": "multipleRecordLinks",
+          "id": "fldN7NwkxotTvpkj3",
+          "options": "is_reversed=False linked_table_id='tblTACmaMETcjNDXU' prefers_single_record_link=False inverse_link_field_id='fldXMbPCddwmjfAwS' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Payout",
+          "type": "multipleRecordLinks",
+          "id": "fldtpjJryTgGWAlS3",
+          "options": "is_reversed=False linked_table_id='tblq6dRgtcxIR2Ang' prefers_single_record_link=False inverse_link_field_id='fld0YtSf3Gcm3Mr8l' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Payment",
+          "type": "multipleRecordLinks",
+          "id": "fld1TZ4pNbNu11cA0",
+          "options": "is_reversed=False linked_table_id='tblMBGMmc26P304WB' prefers_single_record_link=False inverse_link_field_id='fldczN6dtgYZSuFa1' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Created At",
+          "type": "createdTime",
+          "id": "fldE8k4cFnureavGq"
+        },
+        {
+          "name": "Resolved At",
+          "type": "dateTime",
+          "id": "fldLkt5Z52U3azg5e",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Resolved By",
+          "type": "singleCollaborator",
+          "id": "fld0o8HfDtMuyNu5T"
+        },
+        {
+          "name": "Notes",
+          "type": "richText",
+          "id": "fldUNPJtDKo5xf8fd"
+        },
+        {
+          "name": "Lessons copy",
+          "type": "multipleRecordLinks",
+          "id": "fldggnZPt4PLBaCrA",
+          "options": "is_reversed=False linked_table_id='tblmJcPFIkf4pyV5r' prefers_single_record_link=False inverse_link_field_id='fldqVLi79TSep0SEp' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Lessons copy 2",
+          "type": "singleLineText",
+          "id": "fldMCNO8zkiyUmUXm"
+        }
+      ],
+      "description": null
+    },
+    {
+      "name": "Mock Trial Lessons",
+      "id": "tblmJcPFIkf4pyV5r",
+      "record_count": 0,
+      "record_count_display": "0",
+      "field_count": 18,
+      "fields": [
+        {
+          "name": "ID",
+          "type": "formula",
+          "id": "fldHHdMroESJcJr6F",
+          "options": "formula='RECORD_ID()' is_valid=True referenced_field_ids=[] result=SingleLineTextFieldConfig(type='singleLineText')"
+        },
+        {
+          "name": "Created At",
+          "type": "createdTime",
+          "id": "fldYS8xIhKuJfXhR8"
+        },
+        {
+          "name": "Tutor Application",
+          "type": "multipleRecordLinks",
+          "id": "fldNAzARSodf9RAZA",
+          "options": "is_reversed=False linked_table_id='tbl1SJ2FXErQ3SPYr' prefers_single_record_link=True inverse_link_field_id='fldWnzBcLsEZ5i2qp' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Student Name",
+          "type": "singleLineText",
+          "id": "fldfU0eGn6Fbw22GA"
+        },
+        {
+          "name": "Start Time",
+          "type": "dateTime",
+          "id": "fldMjNwSU7b754Sq5",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "End Time",
+          "type": "dateTime",
+          "id": "fldy7FThskX2pLuw9",
+          "options": "time_zone='Asia/Hong_Kong' date_format=DateFormat(format='LL', name='friendly') time_format=TimeFormat(format='HH:mm', name='24hour')"
+        },
+        {
+          "name": "Topics Covered",
+          "type": "richText",
+          "id": "fldeEquFrsLCyrIUk"
+        },
+        {
+          "name": "Progress Highlights",
+          "type": "richText",
+          "id": "fldXwzmGP7MOKGOkP"
+        },
+        {
+          "name": "Areas for Improvement",
+          "type": "richText",
+          "id": "fld1tSBTY73RWSagK"
+        },
+        {
+          "name": "Next Steps",
+          "type": "richText",
+          "id": "fldqbXYuhIgBbfi8d"
+        },
+        {
+          "name": "Lesson Plan Attachment",
+          "type": "multipleAttachments",
+          "id": "fldh7HoDx1tjVgCtJ",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Lesson Notes Attachment",
+          "type": "multipleAttachments",
+          "id": "fldW6MZvX4CViy8iw",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Homework Attachment",
+          "type": "multipleAttachments",
+          "id": "fldMO1vmK4rAi9Yob",
+          "options": "is_reversed=True"
+        },
+        {
+          "name": "Notes",
+          "type": "richText",
+          "id": "fld1RbUsCz398jRFg"
+        },
+        {
+          "name": "Lesson Report Status",
+          "type": "singleSelect",
+          "id": "fldMYUMwfpk8TXN1y",
+          "options": "choices=[Choice(id='sel79TxCdk4kPSZpm', name='Completed', color='cyanLight2'), Choice(id='selpUjkn7pJEJwham', name='Late', color='tealLight2')]"
+        },
+        {
+          "name": "Lesson Report Submitted At",
+          "type": "dateTime",
+          "id": "fldDV7mGBb4ROB7am",
+          "options": "time_zone='utc' date_format=DateFormat(format='M/D/YYYY', name='us') time_format=TimeFormat(format='h:mma', name='12hour')"
+        },
+        {
+          "name": "Admin Notifications",
+          "type": "multipleRecordLinks",
+          "id": "fldqVLi79TSep0SEp",
+          "options": "is_reversed=False linked_table_id='tbl4poo8mQLHNdHBA' prefers_single_record_link=False inverse_link_field_id='fldggnZPt4PLBaCrA' view_id_for_record_selection=None"
+        },
+        {
+          "name": "Tutor Applications",
+          "type": "multipleRecordLinks",
+          "id": "fldyJbIO8fIlV4mIz",
+          "options": "is_reversed=False linked_table_id='tbl1SJ2FXErQ3SPYr' prefers_single_record_link=False inverse_link_field_id='fldzlxF6CVr4yHo8A' view_id_for_record_selection=None"
+        }
+      ],
+      "description": null
+    }
+  ],
+  "relationships": [
+    {
+      "source_table": "Users",
+      "field_name": "Link to Tutor Record",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Users",
+      "field_name": "Link to Parent Record",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Users",
+      "field_name": "Link to Student Record",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutors",
+      "field_name": "User ID",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutors",
+      "field_name": "Secondary School",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutors",
+      "field_name": "University",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutors",
+      "field_name": "Subjects",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutors",
+      "field_name": "Tutoring Packages",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutors",
+      "field_name": "Lessons",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutors",
+      "field_name": "Payouts",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutors",
+      "field_name": "Tutor Application",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Parents",
+      "field_name": "User ID",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Parents",
+      "field_name": "Children",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Parents",
+      "field_name": "Payments",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Parents",
+      "field_name": "Tutoring Packages",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Parents",
+      "field_name": "Leads",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Students",
+      "field_name": "User ID",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Students",
+      "field_name": "Parents",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Students",
+      "field_name": "School",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Students",
+      "field_name": "Requested Subjects",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Students",
+      "field_name": "Tutoring Packages",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Students",
+      "field_name": "Payments",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Students",
+      "field_name": "Lessons",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Students",
+      "field_name": "Leads",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Subjects",
+      "field_name": "Link to Tutors",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Subjects",
+      "field_name": "Link to Students",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Subjects",
+      "field_name": "Link to Tutoring Packages",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Subjects",
+      "field_name": "Tutor Applications",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Subjects",
+      "field_name": "Leads",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Subjects",
+      "field_name": "Lessons",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Educational Institutions",
+      "field_name": "Link to Tutors (for Primary/Secondary School)",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Educational Institutions",
+      "field_name": "Link to Tutors (for University)",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Educational Institutions",
+      "field_name": "Link to Students",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Educational Institutions",
+      "field_name": "Tutor Applications",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Educational Institutions",
+      "field_name": "Tutor Applications copy",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Educational Institutions",
+      "field_name": "Leads",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutoring Packages",
+      "field_name": "Student",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutoring Packages",
+      "field_name": "Parents",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutoring Packages",
+      "field_name": "Tutor",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutoring Packages",
+      "field_name": "Subjects",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutoring Packages",
+      "field_name": "Lessons",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutoring Packages",
+      "field_name": "Payments",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutoring Packages",
+      "field_name": "Payout",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutoring Packages",
+      "field_name": "Admin Notifications",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Lessons",
+      "field_name": "Tutor",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Lessons",
+      "field_name": "Student",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Lessons",
+      "field_name": "Tutoring Package",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Lessons",
+      "field_name": "Subjects",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Lessons",
+      "field_name": "Admin Notifications",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Payments",
+      "field_name": "Tutoring Package",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Payments",
+      "field_name": "Student",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Payments",
+      "field_name": "Parent",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Payments",
+      "field_name": "Admin Notifications",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Payouts",
+      "field_name": "Tutoring Package",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Payouts",
+      "field_name": "Tutor",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Payouts",
+      "field_name": "Admin Notifications",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutor Applications",
+      "field_name": "Secondary School",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutor Applications",
+      "field_name": "University",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutor Applications",
+      "field_name": "Subjects Applied",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutor Applications",
+      "field_name": "Mock Trial Lesson",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutor Applications",
+      "field_name": "Link to Mock Trial Lesson",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Tutor Applications",
+      "field_name": "Tutor Record",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Leads",
+      "field_name": "School (Mapped)",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Leads",
+      "field_name": "Subjects Wanted (Mapped)",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Leads",
+      "field_name": "Link to Parents",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Leads",
+      "field_name": "Link to Students",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Admin Notifications",
+      "field_name": "Tutoring Package",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Admin Notifications",
+      "field_name": "Lesson",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Admin Notifications",
+      "field_name": "Payout",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Admin Notifications",
+      "field_name": "Payment",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Admin Notifications",
+      "field_name": "Lessons copy",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Mock Trial Lessons",
+      "field_name": "Tutor Application",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Mock Trial Lessons",
+      "field_name": "Admin Notifications",
+      "linked_table_id": null,
+      "is_reversed": false
+    },
+    {
+      "source_table": "Mock Trial Lessons",
+      "field_name": "Tutor Applications",
+      "linked_table_id": null,
+      "is_reversed": false
+    }
+  ]
+}
