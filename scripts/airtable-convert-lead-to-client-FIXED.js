@@ -1,5 +1,5 @@
 // ============================================================================
-// AIRTABLE SCRIPT: Convert Lead to Client (FIXED VERSION v1.2)
+// AIRTABLE SCRIPT: Convert Lead to Client (FIXED VERSION v1.3)
 // ============================================================================
 // Trigger: When "Convert to Client" checkbox is checked in Leads table
 // Purpose: Create User, Parent/Student records with Xero integration
@@ -11,20 +11,21 @@
 //   3. Create Student User → Create Student record
 //   4. Link Student User ↔ Student record (bidirectional)
 //   5. Send Xero webhook for Parent User (AFTER all records/links created)
-//   6. Poll for Xero Contact ID (check first, then wait 5s between attempts)
+//   6. Poll for Xero Contact ID (check first, then wait 10s between attempts)
 //   7. Update Lead status to Converted
 //
 // For Independent Student Leads:
 //   1. Create Student User → Create Student record
 //   2. Link Student User ↔ Student record (bidirectional)
 //   3. Send Xero webhook for Student User (AFTER all records/links created)
-//   4. Poll for Xero Contact ID (check first, then wait 5s between attempts)
+//   4. Poll for Xero Contact ID (check first, then wait 10s between attempts)
 //   5. Update Lead status to Converted
 //
 // IMPORTANT NOTES:
 // - input.config() is called ONCE at the beginning (Airtable limitation)
 // - Webhook is sent AFTER all records are created and linked
-// - Polling checks Xero Contact ID first, then waits 5s if not found
+// - Polling checks Xero Contact ID first, then waits 10s if not found
+// - Limited to 10 polling attempts to stay under Airtable's 30 query limit
 //
 // SETUP INSTRUCTIONS:
 // 1. In Airtable Automations, create a new automation
@@ -58,8 +59,8 @@ const CONFIG = {
     // Webhook configuration
     WEBHOOK_CONFIG: {
         RETRY_ATTEMPTS: 3,          // Number of times to retry webhook call
-        POLLING_ATTEMPTS: 30,       // Number of times to poll for Xero ID (increased for 5s delays)
-        POLLING_DELAY_ITERATIONS: 500000 // Busy-wait iterations for ~5 second delay
+        POLLING_ATTEMPTS: 10,       // Number of times to poll for Xero ID (10 × 10s = 100s total, staying under 30 query limit)
+        POLLING_DELAY_ITERATIONS: 1000000 // Busy-wait iterations for ~10 second delay
     },
 
     // Table Names
@@ -355,9 +356,9 @@ async function callXeroWebhookAndWait(userId) {
                 };
             } else {
                 console.log(`Xero Contact ID not yet populated (poll ${pollAttempt}/${MAX_POLLING_ATTEMPTS})`);
-                // Wait ~5 seconds before next poll attempt
+                // Wait ~10 seconds before next poll attempt
                 if (pollAttempt < MAX_POLLING_ATTEMPTS) {
-                    console.log('Waiting 5 seconds before next poll...');
+                    console.log('Waiting 10 seconds before next poll...');
                     busyWait(CONFIG.WEBHOOK_CONFIG.POLLING_DELAY_ITERATIONS);
                 }
             }

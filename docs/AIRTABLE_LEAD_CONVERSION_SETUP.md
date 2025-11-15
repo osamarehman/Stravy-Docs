@@ -111,7 +111,7 @@ The script performs the following steps:
 6. **Creates Student** record linked to both User and Parent
 7. **Links Student User** back to Student record (bidirectional link)
 8. **Calls Xero webhook** (AFTER all records and links are created)
-9. **Polls for Xero Contact ID** (checks immediately, then waits 5 seconds between attempts)
+9. **Polls for Xero Contact ID** (checks immediately, then waits 10 seconds between attempts, max 10 attempts)
 10. **Updates Lead** record:
    - Status → "Converted"
    - Links to Parent and Student records
@@ -125,7 +125,7 @@ The script performs the following steps:
 3. **Creates Student** record linked to User (no parent)
 4. **Links Student User** back to Student record (bidirectional link)
 5. **Calls Xero webhook** (AFTER all records and links are created)
-6. **Polls for Xero Contact ID** (checks immediately, then waits 5 seconds between attempts)
+6. **Polls for Xero Contact ID** (checks immediately, then waits 10 seconds between attempts, max 10 attempts)
 7. **Updates Lead** record:
    - Status → "Converted"
    - Links to Student record
@@ -160,12 +160,14 @@ WEBHOOKS: {
 ```javascript
 WEBHOOK_CONFIG: {
     RETRY_ATTEMPTS: 3,          // Webhook retry attempts
-    POLLING_ATTEMPTS: 30,       // Xero ID polling attempts (30 × 5s = 150s total)
-    POLLING_DELAY_ITERATIONS: 500000  // Busy-wait iterations (~5 seconds)
+    POLLING_ATTEMPTS: 10,       // Xero ID polling attempts (10 × 10s = 100s total)
+    POLLING_DELAY_ITERATIONS: 1000000  // Busy-wait iterations (~10 seconds)
 }
 ```
 
-**Note**: Airtable scripts don't support `setTimeout()`, so delays use a busy-wait loop. The `POLLING_DELAY_ITERATIONS` value is calibrated for approximately 5 seconds.
+**Note**: Airtable scripts don't support `setTimeout()`, so delays use a busy-wait loop. The `POLLING_DELAY_ITERATIONS` value is calibrated for approximately 10 seconds.
+
+**Important**: Airtable has a limit of 30 table queries per script execution. With 10 polling attempts plus other queries (creating records, updating records, etc.), we stay safely under this limit.
 
 ## Troubleshooting
 
@@ -202,9 +204,25 @@ WEBHOOK_CONFIG: {
 
 **Solutions**:
 1. Check n8n webhook is running and accessible
-2. Increase `POLLING_ATTEMPTS` in config
+2. Increase `POLLING_ATTEMPTS` in config (but stay under 30 total queries)
 3. Check Xero integration is working
 4. Review n8n logs for errors
+
+### Error: "Exceeded quota of 30 table queries per script invocation"
+
+**Cause**: Airtable limits scripts to 30 table queries per execution. Each poll attempt is a query.
+
+**Solutions**:
+1. This was fixed in v1.3 by reducing polling to 10 attempts
+2. If still occurring, reduce `POLLING_ATTEMPTS` further in config
+3. Each of these operations counts as a query:
+   - Reading lead record
+   - Creating records
+   - Updating records
+   - Polling for Xero ID (each poll = 1 query)
+4. With 10 polling attempts + ~10 other queries, you should stay under the limit
+
+**Note**: If the Xero Contact ID is being populated correctly but the script times out, the issue is the polling limit. The webhook may be working fine.
 
 ### Lead converted but "Convert to Client" checkbox won't uncheck
 
@@ -278,9 +296,10 @@ The Xero webhook is called **AFTER** all records are created and all bidirection
 
 After the webhook is triggered, the script polls the Users table to check if the Xero Contact ID field has been populated:
 - **Check immediately** for the Xero Contact ID
-- If not found, **wait 5 seconds** before the next check
-- Repeat up to 30 times (total ~150 seconds)
+- If not found, **wait 10 seconds** before the next check
+- Repeat up to 10 times (total ~100 seconds)
 - This allows the n8n workflow time to create the Xero contact and update the field
+- **Limited to 10 attempts** to stay under Airtable's 30 table query limit per script execution
 
 ## Field Mappings
 
@@ -326,11 +345,17 @@ For issues or questions:
 
 ## Version History
 
+- **v1.3** (2025-11-15):
+  - **CRITICAL FIX**: Reduced polling to 10 attempts (was 30) to stay under Airtable's 30 query limit
+  - Increased polling delay to 10 seconds (was 5 seconds)
+  - Total polling time: ~100 seconds (10 attempts × 10s)
+  - Prevents "Exceeded quota of 30 table queries per script invocation" error
+
 - **v1.2** (2025-11-15):
   - Fixed input.config() being called multiple times (Airtable limitation - can only be called once)
   - Moved webhook call to END of workflow (after all records/links are created)
-  - Updated polling to check FIRST, then wait 5 seconds between attempts
-  - Increased polling attempts to 30 (total ~150 seconds) with 5-second delays
+  - Updated polling to check FIRST, then wait between attempts
+  - Initial polling: 30 attempts with 5-second delays (caused query limit issues)
 
 - **v1.1** (2025-11-15): Added bidirectional linking between User and Parent/Student records, webhook now called after links are established
 
