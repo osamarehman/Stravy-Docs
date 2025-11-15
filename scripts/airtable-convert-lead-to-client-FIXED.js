@@ -1,8 +1,23 @@
 // ============================================================================
-// AIRTABLE SCRIPT: Convert Lead to Client (FIXED VERSION)
+// AIRTABLE SCRIPT: Convert Lead to Client (FIXED VERSION v1.1)
 // ============================================================================
 // Trigger: When "Convert to Client" checkbox is checked in Leads table
 // Purpose: Create User, Parent/Student records with Xero integration
+//
+// WORKFLOW:
+// For Parent Leads:
+//   1. Create Parent User → Create Parent record
+//   2. Link Parent User ↔ Parent record (bidirectional)
+//   3. Send Xero webhook for Parent User
+//   4. Create Student User → Create Student record
+//   5. Link Student User ↔ Student record (bidirectional)
+//   6. Update Lead status to Converted
+//
+// For Independent Student Leads:
+//   1. Create Student User → Create Student record
+//   2. Link Student User ↔ Student record (bidirectional)
+//   3. Send Xero webhook for Student User
+//   4. Update Lead status to Converted
 //
 // SETUP INSTRUCTIONS:
 // 1. In Airtable Automations, create a new automation
@@ -87,7 +102,9 @@ const CONFIG = {
         ROLE: 'Role',
         STATUS: 'Status',
         PROFILE_COMPLETED_AT: 'Profile Completed At',
-        XERO_CONTACT_ID: 'Xero Contact ID' // Assumed to be in Users table
+        XERO_CONTACT_ID: 'Xero Contact ID',
+        LINK_TO_PARENT_RECORD: 'Link to Parent Record', // Bidirectional link to Parents table
+        LINK_TO_STUDENT_RECORD: 'Link to Student Record' // Bidirectional link to Students table
     },
 
     // Parents table field names
@@ -461,13 +478,7 @@ async function convertParentLead(leadRecord, leadId) {
         createdRecords.parentUserId = parentUserId;
         console.log(`✅ Parent User created: ${parentUserId}`);
 
-        // STEP 2: Call webhook and poll for Xero ID
-        console.log('Triggering Xero contact creation and waiting for ID...');
-        let xeroResponse = await callXeroWebhookAndWait(parentUserId);
-        let parentXeroId = xeroResponse.xeroContactId;
-        console.log(`✅ Parent Xero Contact ID retrieved: ${parentXeroId}`);
-
-        // STEP 3: Create Parent record and link to User record
+        // STEP 2: Create Parent record and link to User record
         console.log('Creating Parent record...');
         let parentsTbl = base.getTable(CONFIG.TABLES.PARENTS);
         let parentRecordId = await parentsTbl.createRecordAsync({
@@ -476,6 +487,19 @@ async function convertParentLead(leadRecord, leadId) {
 
         createdRecords.parentRecordId = parentRecordId;
         console.log(`✅ Parent record created: ${parentRecordId}`);
+
+        // STEP 3: Update Parent User to link back to Parent record (bidirectional link)
+        console.log('Linking Parent User to Parent record...');
+        await usersTbl.updateRecordAsync(parentUserId, {
+            [CONFIG.USER_FIELDS.LINK_TO_PARENT_RECORD]: [{id: parentRecordId}]
+        });
+        console.log(`✅ Parent User linked to Parent record`);
+
+        // STEP 4: Call webhook and poll for Xero ID
+        console.log('Triggering Xero contact creation and waiting for ID...');
+        let xeroResponse = await callXeroWebhookAndWait(parentUserId);
+        let parentXeroId = xeroResponse.xeroContactId;
+        console.log(`✅ Parent Xero Contact ID retrieved: ${parentXeroId}`);
 
         // STEP 4: Create Student User record (WITHOUT self-reference)
         console.log('Creating Student User record...');
@@ -524,6 +548,13 @@ async function convertParentLead(leadRecord, leadId) {
 
         createdRecords.studentRecordId = studentRecordId;
         console.log(`✅ Student record created: ${studentRecordId}`);
+
+        // STEP 6: Update Student User to link back to Student record (bidirectional link)
+        console.log('Linking Student User to Student record...');
+        await usersTbl.updateRecordAsync(studentUserId, {
+            [CONFIG.USER_FIELDS.LINK_TO_STUDENT_RECORD]: [{id: studentRecordId}]
+        });
+        console.log(`✅ Student User linked to Student record`);
 
         return {
             success: true,
@@ -582,13 +613,7 @@ async function convertIndependentStudentLead(leadRecord, leadId) {
         createdRecords.studentUserId = studentUserId;
         console.log(`✅ Student User created: ${studentUserId}`);
 
-        // STEP 2: Call webhook and poll for Xero ID (for independent students)
-        console.log('Triggering Xero contact creation and waiting for ID...');
-        let xeroResponse = await callXeroWebhookAndWait(studentUserId);
-        let studentXeroId = xeroResponse.xeroContactId;
-        console.log(`✅ Student Xero Contact ID retrieved: ${studentXeroId}`);
-
-        // STEP 3: Create Student record and link to User
+        // STEP 2: Create Student record and link to User
         console.log('Creating Student record...');
         let studentsTbl = base.getTable(CONFIG.TABLES.STUDENTS);
 
@@ -620,6 +645,19 @@ async function convertIndependentStudentLead(leadRecord, leadId) {
 
         createdRecords.studentRecordId = studentRecordId;
         console.log(`✅ Student record created: ${studentRecordId}`);
+
+        // STEP 3: Update Student User to link back to Student record (bidirectional link)
+        console.log('Linking Student User to Student record...');
+        await usersTbl.updateRecordAsync(studentUserId, {
+            [CONFIG.USER_FIELDS.LINK_TO_STUDENT_RECORD]: [{id: studentRecordId}]
+        });
+        console.log(`✅ Student User linked to Student record`);
+
+        // STEP 4: Call webhook and poll for Xero ID (for independent students)
+        console.log('Triggering Xero contact creation and waiting for ID...');
+        let xeroResponse = await callXeroWebhookAndWait(studentUserId);
+        let studentXeroId = xeroResponse.xeroContactId;
+        console.log(`✅ Student Xero Contact ID retrieved: ${studentXeroId}`);
 
         return {
             success: true,

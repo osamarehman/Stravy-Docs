@@ -105,27 +105,30 @@ The script performs the following steps:
 
 1. **Validates** required parent and student information
 2. **Creates Parent User** record with status "Active"
-3. **Calls Xero webhook** and waits for Xero Contact ID
-4. **Creates Parent** record linked to User
-5. **Creates Student User** record (dependent) with generated email if needed
-6. **Creates Student** record linked to both User and Parent
-7. **Updates Lead** record:
+3. **Creates Parent** record linked to User
+4. **Links Parent User** back to Parent record (bidirectional link)
+5. **Calls Xero webhook** and waits for Xero Contact ID
+6. **Creates Student User** record (dependent) with generated email if needed
+7. **Creates Student** record linked to both User and Parent
+8. **Links Student User** back to Student record (bidirectional link)
+9. **Updates Lead** record:
    - Status → "Converted"
    - Links to Parent and Student records
    - Sets Converted At date
-8. **Creates Admin Notification** with success details
+10. **Creates Admin Notification** with success details
 
 ### For Independent Student Leads:
 
 1. **Validates** required student information
 2. **Creates Student User** record with status "Active"
-3. **Calls Xero webhook** and waits for Xero Contact ID
-4. **Creates Student** record linked to User (no parent)
-5. **Updates Lead** record:
+3. **Creates Student** record linked to User (no parent)
+4. **Links Student User** back to Student record (bidirectional link)
+5. **Calls Xero webhook** and waits for Xero Contact ID
+6. **Updates Lead** record:
    - Status → "Converted"
    - Links to Student record
    - Sets Converted At date
-6. **Creates Admin Notification** with success details
+7. **Creates Admin Notification** with success details
 
 ### On Error:
 
@@ -236,6 +239,36 @@ The script creates admin notifications for:
 - **Status**: Pending
 - **Details**: Error message, lead information for manual review
 
+## Bidirectional Linking
+
+The script creates **bidirectional links** between User records and Parent/Student records:
+
+### Why Bidirectional Links?
+
+Bidirectional links ensure that both tables can reference each other, making it easier to:
+- Navigate from User to Parent/Student record and vice versa
+- Maintain data integrity
+- Enable Airtable's lookup and rollup fields to work in both directions
+
+### How It Works:
+
+**For Parent Records:**
+1. Parent record is created with `User ID` field linking to the User record
+2. User record is then updated with `Link to Parent Record` field linking to the Parent record
+3. Both records now reference each other
+
+**For Student Records:**
+1. Student record is created with `User ID` field linking to the User record
+2. User record is then updated with `Link to Student Record` field linking to the Student record
+3. Both records now reference each other
+
+### Webhook Timing:
+
+The Xero webhook is called **AFTER** the bidirectional links are established. This ensures:
+- The User record has complete relationship data before Xero contact creation
+- Any webhook logic can access both the User and Parent/Student records
+- Data integrity is maintained throughout the process
+
 ## Field Mappings
 
 ### Leads → Users (Parent)
@@ -280,4 +313,5 @@ For issues or questions:
 
 ## Version History
 
+- **v1.1** (2025-11-15): Added bidirectional linking between User and Parent/Student records, webhook now called after links are established
 - **v1.0** (2025-11-15): Fixed "Lead ID not provided" error, improved error handling and logging
