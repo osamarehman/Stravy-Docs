@@ -107,15 +107,16 @@ The script performs the following steps:
 2. **Creates Parent User** record with status "Active"
 3. **Creates Parent** record linked to User
 4. **Links Parent User** back to Parent record (bidirectional link)
-5. **Calls Xero webhook** and waits for Xero Contact ID
-6. **Creates Student User** record (dependent) with generated email if needed
-7. **Creates Student** record linked to both User and Parent
-8. **Links Student User** back to Student record (bidirectional link)
-9. **Updates Lead** record:
+5. **Creates Student User** record (dependent) with generated email if needed
+6. **Creates Student** record linked to both User and Parent
+7. **Links Student User** back to Student record (bidirectional link)
+8. **Calls Xero webhook** (AFTER all records and links are created)
+9. **Polls for Xero Contact ID** (checks immediately, then waits 5 seconds between attempts)
+10. **Updates Lead** record:
    - Status → "Converted"
    - Links to Parent and Student records
    - Sets Converted At date
-10. **Creates Admin Notification** with success details
+11. **Creates Admin Notification** with success details
 
 ### For Independent Student Leads:
 
@@ -123,12 +124,13 @@ The script performs the following steps:
 2. **Creates Student User** record with status "Active"
 3. **Creates Student** record linked to User (no parent)
 4. **Links Student User** back to Student record (bidirectional link)
-5. **Calls Xero webhook** and waits for Xero Contact ID
-6. **Updates Lead** record:
+5. **Calls Xero webhook** (AFTER all records and links are created)
+6. **Polls for Xero Contact ID** (checks immediately, then waits 5 seconds between attempts)
+7. **Updates Lead** record:
    - Status → "Converted"
    - Links to Student record
    - Sets Converted At date
-7. **Creates Admin Notification** with success details
+8. **Creates Admin Notification** with success details
 
 ### On Error:
 
@@ -158,10 +160,12 @@ WEBHOOKS: {
 ```javascript
 WEBHOOK_CONFIG: {
     RETRY_ATTEMPTS: 3,          // Webhook retry attempts
-    POLLING_ATTEMPTS: 15,       // Xero ID polling attempts
-    POLLING_DELAY_ITERATIONS: 100000  // Delay between polls
+    POLLING_ATTEMPTS: 30,       // Xero ID polling attempts (30 × 5s = 150s total)
+    POLLING_DELAY_ITERATIONS: 500000  // Busy-wait iterations (~5 seconds)
 }
 ```
+
+**Note**: Airtable scripts don't support `setTimeout()`, so delays use a busy-wait loop. The `POLLING_DELAY_ITERATIONS` value is calibrated for approximately 5 seconds.
 
 ## Troubleshooting
 
@@ -264,10 +268,19 @@ Bidirectional links ensure that both tables can reference each other, making it 
 
 ### Webhook Timing:
 
-The Xero webhook is called **AFTER** the bidirectional links are established. This ensures:
+The Xero webhook is called **AFTER** all records are created and all bidirectional links are established. This ensures:
 - The User record has complete relationship data before Xero contact creation
 - Any webhook logic can access both the User and Parent/Student records
 - Data integrity is maintained throughout the process
+- All database operations are complete before external API calls
+
+### Polling for Xero Contact ID:
+
+After the webhook is triggered, the script polls the Users table to check if the Xero Contact ID field has been populated:
+- **Check immediately** for the Xero Contact ID
+- If not found, **wait 5 seconds** before the next check
+- Repeat up to 30 times (total ~150 seconds)
+- This allows the n8n workflow time to create the Xero contact and update the field
 
 ## Field Mappings
 
@@ -313,5 +326,12 @@ For issues or questions:
 
 ## Version History
 
+- **v1.2** (2025-11-15):
+  - Fixed input.config() being called multiple times (Airtable limitation - can only be called once)
+  - Moved webhook call to END of workflow (after all records/links are created)
+  - Updated polling to check FIRST, then wait 5 seconds between attempts
+  - Increased polling attempts to 30 (total ~150 seconds) with 5-second delays
+
 - **v1.1** (2025-11-15): Added bidirectional linking between User and Parent/Student records, webhook now called after links are established
+
 - **v1.0** (2025-11-15): Fixed "Lead ID not provided" error, improved error handling and logging

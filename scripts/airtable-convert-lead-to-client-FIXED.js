@@ -1,5 +1,5 @@
 // ============================================================================
-// AIRTABLE SCRIPT: Convert Lead to Client (FIXED VERSION v1.1)
+// AIRTABLE SCRIPT: Convert Lead to Client (FIXED VERSION v1.2)
 // ============================================================================
 // Trigger: When "Convert to Client" checkbox is checked in Leads table
 // Purpose: Create User, Parent/Student records with Xero integration
@@ -8,16 +8,23 @@
 // For Parent Leads:
 //   1. Create Parent User → Create Parent record
 //   2. Link Parent User ↔ Parent record (bidirectional)
-//   3. Send Xero webhook for Parent User
-//   4. Create Student User → Create Student record
-//   5. Link Student User ↔ Student record (bidirectional)
-//   6. Update Lead status to Converted
+//   3. Create Student User → Create Student record
+//   4. Link Student User ↔ Student record (bidirectional)
+//   5. Send Xero webhook for Parent User (AFTER all records/links created)
+//   6. Poll for Xero Contact ID (check first, then wait 5s between attempts)
+//   7. Update Lead status to Converted
 //
 // For Independent Student Leads:
 //   1. Create Student User → Create Student record
 //   2. Link Student User ↔ Student record (bidirectional)
-//   3. Send Xero webhook for Student User
-//   4. Update Lead status to Converted
+//   3. Send Xero webhook for Student User (AFTER all records/links created)
+//   4. Poll for Xero Contact ID (check first, then wait 5s between attempts)
+//   5. Update Lead status to Converted
+//
+// IMPORTANT NOTES:
+// - input.config() is called ONCE at the beginning (Airtable limitation)
+// - Webhook is sent AFTER all records are created and linked
+// - Polling checks Xero Contact ID first, then waits 5s if not found
 //
 // SETUP INSTRUCTIONS:
 // 1. In Airtable Automations, create a new automation
@@ -51,8 +58,8 @@ const CONFIG = {
     // Webhook configuration
     WEBHOOK_CONFIG: {
         RETRY_ATTEMPTS: 3,          // Number of times to retry webhook call
-        POLLING_ATTEMPTS: 15,       // Number of times to poll for Xero ID
-        POLLING_DELAY_ITERATIONS: 100000 // Busy-wait iterations (Airtable doesn't support setTimeout)
+        POLLING_ATTEMPTS: 30,       // Number of times to poll for Xero ID (increased for 5s delays)
+        POLLING_DELAY_ITERATIONS: 500000 // Busy-wait iterations for ~5 second delay
     },
 
     // Table Names
@@ -330,11 +337,6 @@ async function callXeroWebhookAndWait(userId) {
     for (let pollAttempt = 1; pollAttempt <= MAX_POLLING_ATTEMPTS; pollAttempt++) {
         console.log(`Poll attempt ${pollAttempt}/${MAX_POLLING_ATTEMPTS}...`);
 
-        // Add delay between polls (except first attempt)
-        if (pollAttempt > 1) {
-            busyWait(CONFIG.WEBHOOK_CONFIG.POLLING_DELAY_ITERATIONS);
-        }
-
         // Query Users table to check if Xero Contact ID is populated
         let usersQuery = await usersTbl.selectRecordsAsync({
             fields: [CONFIG.USER_FIELDS.XERO_CONTACT_ID]
@@ -353,6 +355,11 @@ async function callXeroWebhookAndWait(userId) {
                 };
             } else {
                 console.log(`Xero Contact ID not yet populated (poll ${pollAttempt}/${MAX_POLLING_ATTEMPTS})`);
+                // Wait ~5 seconds before next poll attempt
+                if (pollAttempt < MAX_POLLING_ATTEMPTS) {
+                    console.log('Waiting 5 seconds before next poll...');
+                    busyWait(CONFIG.WEBHOOK_CONFIG.POLLING_DELAY_ITERATIONS);
+                }
             }
         } else {
             console.error(`User record ${userId} not found`);
@@ -495,12 +502,6 @@ async function convertParentLead(leadRecord, leadId) {
         });
         console.log(`✅ Parent User linked to Parent record`);
 
-        // STEP 4: Call webhook and poll for Xero ID
-        console.log('Triggering Xero contact creation and waiting for ID...');
-        let xeroResponse = await callXeroWebhookAndWait(parentUserId);
-        let parentXeroId = xeroResponse.xeroContactId;
-        console.log(`✅ Parent Xero Contact ID retrieved: ${parentXeroId}`);
-
         // STEP 4: Create Student User record (WITHOUT self-reference)
         console.log('Creating Student User record...');
         let studentUserId = await usersTbl.createRecordAsync({
@@ -555,6 +556,12 @@ async function convertParentLead(leadRecord, leadId) {
             [CONFIG.USER_FIELDS.LINK_TO_STUDENT_RECORD]: [{id: studentRecordId}]
         });
         console.log(`✅ Student User linked to Student record`);
+
+        // STEP 7: All records created and linked - Now trigger Xero webhook and poll for ID
+        console.log('All records created and linked. Triggering Xero contact creation...');
+        let xeroResponse = await callXeroWebhookAndWait(parentUserId);
+        let parentXeroId = xeroResponse.xeroContactId;
+        console.log(`✅ Parent Xero Contact ID retrieved: ${parentXeroId}`);
 
         return {
             success: true,
@@ -721,38 +728,42 @@ async function rollbackRecords(createdRecords) {
 
 
 (async function main() {
+    // ============================================================================
+    // IMPORTANT: Get input config ONCE at the very beginning
+    // input.config() can only be called once in Airtable scripts
+    // ============================================================================
+
+    let inputConfig = input.config();
+    console.log('Input config received:', JSON.stringify(inputConfig));
+
+    // Try multiple possible input field names
+    let leadId = inputConfig.leadRecordId || inputConfig['leadRecordId'] ||
+                 inputConfig['Lead ID'] || inputConfig.leadId ||
+                 inputConfig.recordId || inputConfig['Record ID'];
+
+    if (!leadId) {
+        console.error('❌ Lead ID not provided in input config');
+        console.error('Available input fields:', Object.keys(inputConfig));
+        console.error('');
+        console.error('AUTOMATION SETUP INSTRUCTIONS:');
+        console.error('1. In your Airtable automation, go to the "Run a script" action');
+        console.error('2. Click "Configure input variables"');
+        console.error('3. Add a new input variable:');
+        console.error('   - Variable name: leadRecordId');
+        console.error('   - Value: Select the record ID from the trigger step');
+        console.error('4. Save and test the automation');
+        console.error('');
+        throw new Error('Lead ID not provided. Please configure the automation to pass the record ID. See console for setup instructions.');
+    }
+
     try {
         // ============================================================================
-        // FIX: Improved input handling with better error messages
+        // START CONVERSION PROCESS
         // ============================================================================
 
         console.log('='.repeat(60));
         console.log('LEAD CONVERSION SCRIPT STARTED');
         console.log('='.repeat(60));
-
-        // Get input configuration
-        let inputConfig = input.config();
-        console.log('Input config received:', JSON.stringify(inputConfig));
-
-        // Try multiple possible input field names
-        let leadId = inputConfig.leadRecordId || inputConfig['leadRecordId'] ||
-                     inputConfig['Lead ID'] || inputConfig.leadId ||
-                     inputConfig.recordId || inputConfig['Record ID'];
-
-        if (!leadId) {
-            console.error('❌ Lead ID not provided in input config');
-            console.error('Available input fields:', Object.keys(inputConfig));
-            console.error('');
-            console.error('AUTOMATION SETUP INSTRUCTIONS:');
-            console.error('1. In your Airtable automation, go to the "Run a script" action');
-            console.error('2. Click "Configure input variables"');
-            console.error('3. Add a new input variable:');
-            console.error('   - Variable name: leadRecordId');
-            console.error('   - Value: Select the record ID from the trigger step');
-            console.error('4. Save and test the automation');
-            console.error('');
-            throw new Error('Lead ID not provided. Please configure the automation to pass the record ID. See console for setup instructions.');
-        }
 
         console.log(`\n${'='.repeat(60)}`);
         console.log(`CONVERTING LEAD: ${leadId}`);
@@ -902,17 +913,11 @@ async function rollbackRecords(createdRecords) {
 
         // Try to uncheck the "Convert to Client" checkbox on error
         try {
-            let inputConfig = input.config();
-            let leadId = inputConfig.leadRecordId || inputConfig['leadRecordId'] ||
-                         inputConfig['Lead ID'] || inputConfig.leadId ||
-                         inputConfig.recordId || inputConfig['Record ID'];
-            if (leadId) {
-                let leadsTbl = base.getTable(CONFIG.TABLES.LEADS);
-                await leadsTbl.updateRecordAsync(leadId, {
-                    [CONFIG.LEAD_FIELDS.CONVERT_TO_CLIENT]: false
-                });
-                console.log('✅ "Convert to Client" checkbox unchecked after error');
-            }
+            let leadsTbl = base.getTable(CONFIG.TABLES.LEADS);
+            await leadsTbl.updateRecordAsync(leadId, {
+                [CONFIG.LEAD_FIELDS.CONVERT_TO_CLIENT]: false
+            });
+            console.log('✅ "Convert to Client" checkbox unchecked after error');
         } catch (uncheckError) {
             console.error('⚠️ Failed to uncheck checkbox:', uncheckError.message);
         }
@@ -924,25 +929,19 @@ async function rollbackRecords(createdRecords) {
 
             // Try to get lead details for better error notification
             try {
-                let inputConfig = input.config();
-                let leadId = inputConfig.leadRecordId || inputConfig['leadRecordId'] ||
-                             inputConfig['Lead ID'] || inputConfig.leadId ||
-                             inputConfig.recordId || inputConfig['Record ID'];
-                if (leadId) {
-                    let leadsTbl = base.getTable(CONFIG.TABLES.LEADS);
-                    let leadQuery = await leadsTbl.selectRecordsAsync({
-                        fields: [CONFIG.LEAD_FIELDS.LEAD_TYPE, CONFIG.LEAD_FIELDS.PARENT_FIRST_NAME,
-                                CONFIG.LEAD_FIELDS.PARENT_LAST_NAME, CONFIG.LEAD_FIELDS.STUDENT_FIRST_NAME,
-                                CONFIG.LEAD_FIELDS.STUDENT_LAST_NAME]
-                    });
-                    let leadRecord = leadQuery.getRecord(leadId);
+                let leadsTbl = base.getTable(CONFIG.TABLES.LEADS);
+                let leadQuery = await leadsTbl.selectRecordsAsync({
+                    fields: [CONFIG.LEAD_FIELDS.LEAD_TYPE, CONFIG.LEAD_FIELDS.PARENT_FIRST_NAME,
+                            CONFIG.LEAD_FIELDS.PARENT_LAST_NAME, CONFIG.LEAD_FIELDS.STUDENT_FIRST_NAME,
+                            CONFIG.LEAD_FIELDS.STUDENT_LAST_NAME]
+                });
+                let leadRecord = leadQuery.getRecord(leadId);
 
-                    if (leadRecord) {
-                        leadType = getSingleSelectName(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.LEAD_TYPE)) || 'Unknown';
-                        leadName = leadType === CONFIG.LEAD_TYPES.PARENT
-                            ? `${safeString(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.PARENT_FIRST_NAME))} ${safeString(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.PARENT_LAST_NAME))}`
-                            : `${safeString(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.STUDENT_FIRST_NAME))} ${safeString(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.STUDENT_LAST_NAME))}`;
-                    }
+                if (leadRecord) {
+                    leadType = getSingleSelectName(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.LEAD_TYPE)) || 'Unknown';
+                    leadName = leadType === CONFIG.LEAD_TYPES.PARENT
+                        ? `${safeString(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.PARENT_FIRST_NAME))} ${safeString(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.PARENT_LAST_NAME))}`
+                        : `${safeString(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.STUDENT_FIRST_NAME))} ${safeString(leadRecord.getCellValue(CONFIG.LEAD_FIELDS.STUDENT_LAST_NAME))}`;
                 }
             } catch (detailError) {
                 // Ignore - we'll use 'Unknown'
